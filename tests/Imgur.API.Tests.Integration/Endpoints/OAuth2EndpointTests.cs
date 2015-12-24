@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Imgur.API.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Imgur.API.Tests.Integration.Endpoints
@@ -10,6 +9,7 @@ namespace Imgur.API.Tests.Integration.Endpoints
     public class OAuth2EndpointTests : TestBase
     {
         [TestMethod]
+        [TestCategory("OAuth2Endpoint")]
         [ExpectedException(typeof (ImgurException))]
         public async Task GetTokenByCodeAsync_SetCodeInvalid_ThrowsImgurException()
         {
@@ -19,6 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints
         }
 
         [TestMethod]
+        [TestCategory("OAuth2Endpoint")]
         public async Task GetTokenByRefreshTokenAsync_SetToken_IsNotNull()
         {
             var authentication = new ImgurClient(ClientId, ClientSecret);

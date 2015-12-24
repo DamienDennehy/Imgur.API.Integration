@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Imgur.API.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
@@ -11,6 +10,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
     public class ImgurClientWithOAuth2Tests : TestBase
     {
         [TestMethod]
+        [TestCategory("AccountEndpointComment")]
         [ExpectedException(typeof (ImgurException))]
         public async Task DeleteCommentAsync_WithValidReponse_ThrowsImgurException()
         {
@@ -23,6 +23,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointComment")]
         public async Task GetCommentCountAsync_WithValidReponse_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
@@ -34,6 +35,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointComment")]
         public async Task GetCommentIdsAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
@@ -45,6 +47,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointComment")]
         public async Task GetCommentsAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);

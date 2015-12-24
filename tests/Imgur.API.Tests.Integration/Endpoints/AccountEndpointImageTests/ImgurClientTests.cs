@@ -9,6 +9,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
     public class ImgurClientTests : TestBase
     {
         [TestMethod]
+        [TestCategory("AccountEndpointImage")]
         public async Task GetImageAsync_IsNotNull()
         {
             var client = new ImgurClient(ClientId, ClientSecret);

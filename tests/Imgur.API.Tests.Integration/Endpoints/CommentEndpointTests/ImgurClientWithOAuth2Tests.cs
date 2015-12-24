@@ -11,6 +11,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
     public class ImgurClientWithOAuth2Tests : TestBase
     {
         [TestMethod]
+        [TestCategory("CommentEndpoint")]
         public async Task GetCommentAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
@@ -23,6 +24,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("CommentEndpoint")]
         public async Task GetRepliesAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
@@ -35,6 +37,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("CommentEndpoint")]
         public async Task CreateCommentAsync_IsNotNull()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
@@ -46,6 +49,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("CommentEndpoint")]
         public async Task CreateCommentAsync_WithParentId_IsNotNull()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
@@ -57,6 +61,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("CommentEndpoint")]
         public async Task CreateReplyAsync_IsNotNull()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
@@ -68,6 +73,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("CommentEndpoint")]
         public async Task DeleteCommentAsync_IsTrue()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
@@ -80,6 +86,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("CommentEndpoint")]
         public async Task VoteCommentAsync_IsTrue()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
@@ -96,6 +103,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
 
         //Running the ReportComment method may cause your account to be banned?
         //[TestMethod]
+        //[TestCategory("CommentEndpoint")]
         //public async Task ReportCommentAsync_IsTrue()
         //{
         //    var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);

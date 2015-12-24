@@ -10,6 +10,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
     public class MashapeClientTests: TestBase
     {
         [TestMethod]
+        [TestCategory("CommentEndpoint")]
         public async Task GetCommentAsync_AreEqual()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
@@ -22,6 +23,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("CommentEndpoint")]
         public async Task GetRepliesAsync_AreEqual()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);

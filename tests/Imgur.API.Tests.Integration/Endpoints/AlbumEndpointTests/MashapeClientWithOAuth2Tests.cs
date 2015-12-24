@@ -26,6 +26,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("AlbumEndpoint")]
         public async Task CreateAlbumAsync_IsNotNull()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);

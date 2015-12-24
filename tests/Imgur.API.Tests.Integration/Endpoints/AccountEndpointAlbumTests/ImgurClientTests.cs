@@ -10,6 +10,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
     public class ImgurClientTests : TestBase
     {
         [TestMethod]
+        [TestCategory("AccountEndpointAlbum")]
         public async Task GetAlbumAsync_IsNotNull()
         {
             var client = new ImgurClient(ClientId, ClientSecret);
@@ -21,6 +22,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointAlbum")]
         public async Task GetAlbumCountAsync_GreaterThan100()
         {
             var client = new ImgurClient(ClientId, ClientSecret);
@@ -32,6 +34,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointAlbum")]
         public async Task GetAlbumIdsAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret);
@@ -43,6 +46,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointAlbum")]
         public async Task GetAlbumsAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret);

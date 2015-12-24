@@ -10,6 +10,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
     public class MashapeClientTests : TestBase
     {
         [TestMethod]
+        [TestCategory("AccountEndpointGallery")]
         public async Task GetAccountGalleryFavoritesAsync_Any()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
@@ -21,6 +22,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointGallery")]
         public async Task GetAccountSubmissionsAsync_Any()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
@@ -32,6 +34,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointGallery")]
         public async Task GetGalleryProfileAsync_AnyTrophies()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);

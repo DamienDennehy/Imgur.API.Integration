@@ -26,6 +26,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("AlbumEndpoint")]
         public async Task CreateAlbumAsync_IsNotNull()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);

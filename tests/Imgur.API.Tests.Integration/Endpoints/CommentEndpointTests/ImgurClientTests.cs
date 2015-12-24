@@ -10,6 +10,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
     public class ImgurClientTests: TestBase
     {
         [TestMethod]
+        [TestCategory("CommentEndpoint")]
         public async Task GetCommentAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret);
@@ -22,6 +23,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("CommentEndpoint")]
         public async Task GetRepliesAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret);

@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Imgur.API.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
@@ -11,6 +10,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
     public class MashapeClientWithOAuth2Tests : TestBase
     {
         [TestMethod]
+        [TestCategory("AccountEndpointAlbum")]
         [ExpectedException(typeof (ImgurException))]
         public async Task DeleteAlbumAsync_ThrowsImgurException()
         {
@@ -23,6 +23,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointAlbum")]
         public async Task GetAlbumAsync_WithValidReponse_AreEqual()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
@@ -34,6 +35,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointAlbum")]
         public async Task GetAlbumCountAsync_WithValidReponse_AreEqual()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
@@ -45,6 +47,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointAlbum")]
         public async Task GetAlbumIdsAsync_AreEqual()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
@@ -56,6 +59,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointAlbum")]
         public async Task GetAlbumsAsync_IsTrue()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);

@@ -9,6 +9,7 @@ namespace Imgur.API.Tests.Integration.Endpoints
     public class RateLimitEndpointTests : TestBase
     {
         [TestMethod]
+        [TestCategory("RateLimitEndpoint")]
         public async Task RateLimit_GetRateLimitWithImgurClient_IsValidRateLimit()
         {
             var client = new ImgurClient(ClientId, ClientSecret);
@@ -20,6 +21,7 @@ namespace Imgur.API.Tests.Integration.Endpoints
         }
 
         [TestMethod]
+        [TestCategory("RateLimitEndpoint")]
         public async Task RateLimit_GetRateLimitWithImgurClientAndOAuth2Authentication_IsValidRateLimit()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
@@ -33,6 +35,7 @@ namespace Imgur.API.Tests.Integration.Endpoints
         }
 
         [TestMethod]
+        [TestCategory("RateLimitEndpoint")]
         public async Task RateLimit_GetRateLimitWithMashapeClient_IsValidRateLimit()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
@@ -44,6 +47,7 @@ namespace Imgur.API.Tests.Integration.Endpoints
         }
 
         [TestMethod]
+        [TestCategory("RateLimitEndpoint")]
         public async Task RateLimit_GetRateLimitWithMashapeClientAndOAuth2Authentication_IsValidRateLimit()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);

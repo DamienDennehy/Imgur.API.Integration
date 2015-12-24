@@ -76,6 +76,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("ImageEndpoint")]
         public async Task UploadImageBinaryAsync_WithImage_AreEqual()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
@@ -97,6 +98,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("ImageEndpoint")]
         public async Task UploadImageStreamAsync_WithImage_AreEqual()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
@@ -121,6 +123,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
         }
 
         [TestMethod]
+        [TestCategory("ImageEndpoint")]
         public async Task UploadImageUrlAsync_WithImage_AreEqual()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);

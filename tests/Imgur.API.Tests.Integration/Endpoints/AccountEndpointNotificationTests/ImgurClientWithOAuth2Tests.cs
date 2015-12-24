@@ -10,6 +10,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointNotificationTests
     public class ImgurClientWithOAuth2Tests : TestBase
     {
         [TestMethod]
+        [TestCategory("AccountEndpointNotification")]
         public async Task GetNotificationsAsync_IsNotNull()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);

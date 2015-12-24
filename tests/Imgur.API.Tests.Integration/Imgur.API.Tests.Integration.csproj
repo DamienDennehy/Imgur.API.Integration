@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Imgur.API, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Imgur.API.3.3.0-build122\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\Imgur.API.dll</HintPath>
+      <HintPath>..\..\packages\Imgur.API.3.3.0-build131\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\Imgur.API.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -87,10 +87,12 @@
     <Compile Include="Endpoints\AlbumEndpointTests\ImgurClientWithOAuth2Tests.cs" />
     <Compile Include="Endpoints\AlbumEndpointTests\MashapeClientTests.cs" />
     <Compile Include="Endpoints\AlbumEndpointTests\MashapeClientWithOAuth2Tests.cs" />
-    <Compile Include="Endpoints\CommentEndpointTests\MashapeClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\CommentEndpointTests\ImgurClientTests.cs" />
     <Compile Include="Endpoints\CommentEndpointTests\ImgurClientWithOAuth2Tests.cs" />
     <Compile Include="Endpoints\CommentEndpointTests\MashapeClientTests.cs" />
-    <Compile Include="Endpoints\CommentEndpointTests\ImgurClientTests.cs" />
+    <Compile Include="Endpoints\CommentEndpointTests\MashapeClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\CustomGalleryEndpointTests\MashapeClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\CustomGalleryEndpointTests\ImgurClientWithOAuth2Tests.cs" />
     <Compile Include="Endpoints\ImageEndpointTests\ImgurClientTests.cs" />
     <Compile Include="Endpoints\ImageEndpointTests\ImgurClientWithOAuth2Tests.cs" />
     <Compile Include="Endpoints\ImageEndpointTests\MashapeClientTests.cs" />

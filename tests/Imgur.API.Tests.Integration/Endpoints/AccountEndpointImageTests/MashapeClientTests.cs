@@ -9,6 +9,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
     public class MashapeClientTests : TestBase
     {
         [TestMethod]
+        [TestCategory("AccountEndpointImage")]
         public async Task GetImageAsync_IsNotNull()
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);

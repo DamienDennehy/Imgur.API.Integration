@@ -11,6 +11,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
     public class ImgurClientTests : TestBase
     {
         [TestMethod]
+        [TestCategory("AccountEndpointComment")]
         public async Task GetCommentAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret);
@@ -22,6 +23,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointComment")]
         public async Task GetCommentCountAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret);
@@ -33,6 +35,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointComment")]
         public async Task GetCommentIdsAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret);
@@ -44,6 +47,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
         }
 
         [TestMethod]
+        [TestCategory("AccountEndpointComment")]
         public async Task GetCommentsAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret);
