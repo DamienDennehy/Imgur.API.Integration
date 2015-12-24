@@ -48,13 +48,19 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
 
             Assert.IsTrue(added);
 
+            System.Threading.Thread.Sleep(500);
+
             var gallery = await endpoint.GetFilteredOutGalleryAsync();
             
             Assert.IsTrue(gallery.Tags.Contains("movies"));
 
+            System.Threading.Thread.Sleep(500);
+
             var removed = await endpoint.RemoveFilteredOutGalleryTagAsync("movies");
 
             Assert.IsTrue(removed);
+
+            System.Threading.Thread.Sleep(500);
 
             gallery = await endpoint.GetFilteredOutGalleryAsync();
 

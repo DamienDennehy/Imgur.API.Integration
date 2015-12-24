@@ -19,6 +19,9 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
+
+            await endpoint.RemoveCustomGalleryTagsAsync(new List<string> { "cats", "dogs" });
+
             var added = await endpoint.AddCustomGalleryTagsAsync(new List<string> { "Cats", "Dogs" });
 
             Assert.IsTrue(added);
@@ -44,18 +47,20 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
+
+            await endpoint.RemoveFilteredOutGalleryTagAsync("movies");
             var added = await endpoint.AddFilteredOutGalleryTagAsync("movies");
 
             Assert.IsTrue(added);
-
+            
             var gallery = await endpoint.GetFilteredOutGalleryAsync();
             
             Assert.IsTrue(gallery.Tags.Contains("movies"));
-
+            
             var removed = await endpoint.RemoveFilteredOutGalleryTagAsync("movies");
 
             Assert.IsTrue(removed);
-
+            
             gallery = await endpoint.GetFilteredOutGalleryAsync();
 
             Assert.IsFalse(gallery.Tags.Contains("movies"));
