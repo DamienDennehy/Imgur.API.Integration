@@ -3,6 +3,7 @@ environment:
   VisualStudioVersion: 14.0
 install:
 - set PATH=C:\Program Files (x86)\MSBuild\14.0\Bin;%PATH%
+- cmd: nuget sources add -Name MyGet-CI -Source http://myget.org/f/damiendennehy/
 - nuget restore
 assembly_info:
   patch: true
