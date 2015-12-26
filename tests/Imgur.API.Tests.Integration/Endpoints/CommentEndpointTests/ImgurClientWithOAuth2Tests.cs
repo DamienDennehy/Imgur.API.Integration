@@ -101,7 +101,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             Assert.IsTrue(comment.Vote == Vote.Down);
         }
 
-        //Running the ReportComment method may cause your account to be banned?
+        //Running the ReportComment method may cause the account to be banned?
         //[TestMethod]
         //[TestCategory("CommentEndpoint")]
         //public async Task ReportCommentAsync_IsTrue()
