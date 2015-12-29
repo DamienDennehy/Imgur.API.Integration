@@ -98,7 +98,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
-            var image = await endpoint.GetAlbumImageAsync(actualAlbum.Id, "uH3kfZP");
+            var image = await endpoint.GetAlbumImageAsync("uH3kfZP", actualAlbum.Id);
 
             Assert.IsNotNull(image);
             Assert.AreEqual("uH3kfZP", image.Id);

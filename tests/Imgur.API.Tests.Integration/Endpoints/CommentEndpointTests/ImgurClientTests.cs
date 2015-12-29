@@ -24,7 +24,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
 
         [TestMethod]
         [TestCategory("CommentEndpoint")]
-        public async Task GetRepliesAsync_AreEqual()
+        public async Task GetRepliesAsync_AnyChildren()
         {
             var client = new ImgurClient(ClientId, ClientSecret);
             var endpoint = new CommentEndpoint(client);

@@ -3,17 +3,17 @@ using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Imgur.API.Tests.Integration.Endpoints
+namespace Imgur.API.Tests.Integration.Endpoints.OAuth2EndpointTests
 {
     [TestClass]
-    public class OAuth2EndpointTests : TestBase
+    public class MashapeClientTests : TestBase
     {
         [TestMethod]
         [TestCategory("OAuth2Endpoint")]
         [ExpectedException(typeof (ImgurException))]
         public async Task GetTokenByCodeAsync_SetCodeInvalid_ThrowsImgurException()
         {
-            var authentication = new ImgurClient(ClientId, ClientSecret);
+            var authentication = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new OAuth2Endpoint(authentication);
             await endpoint.GetTokenByCodeAsync("abc");
         }
@@ -22,7 +22,7 @@ namespace Imgur.API.Tests.Integration.Endpoints
         [TestCategory("OAuth2Endpoint")]
         public async Task GetTokenByRefreshTokenAsync_SetToken_IsNotNull()
         {
-            var authentication = new ImgurClient(ClientId, ClientSecret);
+            var authentication = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new OAuth2Endpoint(authentication);
             var token = await endpoint.GetTokenByRefreshTokenAsync(RefreshToken);
 

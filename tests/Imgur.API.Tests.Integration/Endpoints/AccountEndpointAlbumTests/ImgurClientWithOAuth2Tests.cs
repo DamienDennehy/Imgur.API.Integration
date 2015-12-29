@@ -48,7 +48,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
 
         [TestMethod]
         [TestCategory("AccountEndpointAlbum")]
-        public async Task GetAlbumIdsAsync_AreEqual()
+        public async Task GetAlbumIdsAsync_Any()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);

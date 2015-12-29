@@ -11,7 +11,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointNotificationTests
     {
         [TestMethod]
         [TestCategory("AccountEndpointNotification")]
-        public async Task GetNotificationsAsync_IsNotNull()
+        public async Task GetNotificationsAsync_AnyComments()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
@@ -19,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointNotificationTests
             var notifications = await endpoint.GetNotificationsAsync(false);
 
             Assert.IsNotNull(notifications);
-            Assert.IsTrue(notifications.Messages.Any());
+            Assert.IsTrue(notifications.Replies.Any());
         }
     }
 }

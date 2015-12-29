@@ -35,8 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Imgur.API, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Imgur.API.3.4.0-build153\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\Imgur.API.dll</HintPath>
+    <Reference Include="Imgur.API, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Imgur.API.3.5.0-build156\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\Imgur.API.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -99,10 +99,16 @@
     <Compile Include="Endpoints\ImageEndpointTests\ImgurClientWithOAuth2Tests.cs" />
     <Compile Include="Endpoints\ImageEndpointTests\MashapeClientTests.cs" />
     <Compile Include="Endpoints\ImageEndpointTests\MashapeClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\MemeGenEndpointTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\MemeGenEndpointTests\ImgurClientTests.cs" />
     <Compile Include="Endpoints\NotificationEndpointTests\MashapeClientWithOAuth2Tests.cs" />
     <Compile Include="Endpoints\NotificationEndpointTests\ImgurClientWithOAuth2Tests.cs" />
-    <Compile Include="Endpoints\OAuth2EndpointTests.cs" />
-    <Compile Include="Endpoints\RateLimitEndpointTests.cs" />
+    <Compile Include="Endpoints\OAuth2EndpointTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\OAuth2EndpointTests\ImgurClientTests.cs" />
+    <Compile Include="Endpoints\RateLimitEndpointTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\RateLimitEndpointTests\ImgurClientTests.cs" />
+    <Compile Include="Endpoints\TopicEndpointTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\TopicEndpointTests\ImgurClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBase.cs" />
   </ItemGroup>
