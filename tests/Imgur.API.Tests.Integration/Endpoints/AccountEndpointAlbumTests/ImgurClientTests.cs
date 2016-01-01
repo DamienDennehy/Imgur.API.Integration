@@ -4,6 +4,8 @@ using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
 {
     [TestClass]
@@ -16,7 +18,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
             var client = new ImgurClient(ClientId, ClientSecret);
             var endpoint = new AccountEndpoint(client);
 
-            var album = await endpoint.GetAlbumAsync("SbU9Y", "sarah");
+            var album = await endpoint.GetAlbumAsync("SbU9Y", "sarah").ConfigureAwait(false);
 
             Assert.IsNotNull(album);
         }
@@ -28,7 +30,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
             var client = new ImgurClient(ClientId, ClientSecret);
             var endpoint = new AccountEndpoint(client);
 
-            var albums = await endpoint.GetAlbumCountAsync("sarah");
+            var albums = await endpoint.GetAlbumCountAsync("sarah").ConfigureAwait(false);
 
             Assert.IsTrue(albums > 100);
         }
@@ -40,7 +42,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
             var client = new ImgurClient(ClientId, ClientSecret);
             var endpoint = new AccountEndpoint(client);
 
-            var albums = await endpoint.GetAlbumIdsAsync("sarah");
+            var albums = await endpoint.GetAlbumIdsAsync("sarah").ConfigureAwait(false);
 
             Assert.AreEqual(50, albums.Count());
         }
@@ -52,7 +54,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
             var client = new ImgurClient(ClientId, ClientSecret);
             var endpoint = new AccountEndpoint(client);
 
-            var albums = await endpoint.GetAlbumsAsync("sarah");
+            var albums = await endpoint.GetAlbumsAsync("sarah").ConfigureAwait(false);
 
             Assert.AreEqual(50, albums.Count());
         }

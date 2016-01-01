@@ -3,6 +3,8 @@ using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
 {
     [TestClass]
@@ -15,7 +17,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new AccountEndpoint(client);
 
-            var image = await endpoint.GetImageAsync("ra06GZN", "sarah");
+            var image = await endpoint.GetImageAsync("ra06GZN", "sarah").ConfigureAwait(false);
 
             Assert.IsNotNull(image);
         }

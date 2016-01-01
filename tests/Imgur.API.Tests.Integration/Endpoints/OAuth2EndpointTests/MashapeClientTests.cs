@@ -3,6 +3,8 @@ using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.OAuth2EndpointTests
 {
     [TestClass]
@@ -15,7 +17,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.OAuth2EndpointTests
         {
             var authentication = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new OAuth2Endpoint(authentication);
-            await endpoint.GetTokenByCodeAsync("abc");
+            await endpoint.GetTokenByCodeAsync("abc").ConfigureAwait(false);
         }
 
         [TestMethod]
@@ -24,7 +26,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.OAuth2EndpointTests
         {
             var authentication = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new OAuth2Endpoint(authentication);
-            var token = await endpoint.GetTokenByRefreshTokenAsync(RefreshToken);
+            var token = await endpoint.GetTokenByRefreshTokenAsync(RefreshToken).ConfigureAwait(false);
 
             Assert.IsNotNull(token);
             Assert.IsFalse(string.IsNullOrWhiteSpace(token.AccessToken));

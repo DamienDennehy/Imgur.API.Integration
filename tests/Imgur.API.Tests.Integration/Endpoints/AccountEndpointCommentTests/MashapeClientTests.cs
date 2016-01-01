@@ -5,6 +5,8 @@ using Imgur.API.Endpoints.Impl;
 using Imgur.API.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
 {
     [TestClass]
@@ -17,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new AccountEndpoint(client);
 
-            var comment = await endpoint.GetCommentAsync("300731088", "sarah");
+            var comment = await endpoint.GetCommentAsync("300731088", "sarah").ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
         }
@@ -29,7 +31,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new AccountEndpoint(client);
 
-            var commentCount = await endpoint.GetCommentCountAsync("sarah");
+            var commentCount = await endpoint.GetCommentCountAsync("sarah").ConfigureAwait(false);
 
             Assert.IsTrue(commentCount > 100);
         }
@@ -41,7 +43,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new AccountEndpoint(client);
 
-            var comments = await endpoint.GetCommentIdsAsync("sarah");
+            var comments = await endpoint.GetCommentIdsAsync("sarah").ConfigureAwait(false);
 
             Assert.AreEqual(50, comments.Count());
         }
@@ -53,7 +55,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new AccountEndpoint(client);
 
-            var comments = await endpoint.GetCommentsAsync("sarah", CommentSortOrder.Best);
+            var comments = await endpoint.GetCommentsAsync("sarah", CommentSortOrder.Best).ConfigureAwait(false);
 
             Assert.AreEqual(50, comments.Count());
         }

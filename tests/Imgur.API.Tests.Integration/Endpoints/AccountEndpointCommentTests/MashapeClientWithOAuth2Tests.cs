@@ -4,6 +4,8 @@ using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
 {
     [TestClass]
@@ -17,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var deleted = await endpoint.DeleteCommentAsync("487153732");
+            var deleted = await endpoint.DeleteCommentAsync("487153732").ConfigureAwait(false);
 
             Assert.IsTrue(deleted);
         }
@@ -29,7 +31,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var commentCount = await endpoint.GetCommentCountAsync();
+            var commentCount = await endpoint.GetCommentCountAsync().ConfigureAwait(false);
 
             Assert.IsTrue(commentCount > 1);
         }
@@ -41,7 +43,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var comments = await endpoint.GetCommentIdsAsync();
+            var comments = await endpoint.GetCommentIdsAsync().ConfigureAwait(false);
 
             Assert.IsTrue(comments.Count() > 1);
         }
@@ -53,7 +55,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var comments = await endpoint.GetCommentsAsync();
+            var comments = await endpoint.GetCommentsAsync().ConfigureAwait(false);
 
             Assert.IsTrue(comments.Count() >= 2);
         }

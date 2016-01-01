@@ -4,10 +4,12 @@ using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
 {
     [TestClass]
-    public class MashapeClientTests: TestBase
+    public class MashapeClientTests : TestBase
     {
         [TestMethod]
         [TestCategory("CommentEndpoint")]
@@ -16,7 +18,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.GetCommentAsync("540468501");
+            var comment = await endpoint.GetCommentAsync("540468501").ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
             Assert.AreEqual(540468501, comment.Id);
@@ -29,7 +31,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.GetRepliesAsync("540468501");
+            var comment = await endpoint.GetRepliesAsync("540468501").ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
             Assert.IsTrue(comment.Children.Any());

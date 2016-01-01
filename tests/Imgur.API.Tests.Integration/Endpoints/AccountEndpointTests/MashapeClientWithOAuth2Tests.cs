@@ -5,6 +5,8 @@ using Imgur.API.Endpoints.Impl;
 using Imgur.API.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
 {
     [TestClass]
@@ -17,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var account = await endpoint.GetAccountAsync();
+            var account = await endpoint.GetAccountAsync().ConfigureAwait(false);
 
             Assert.IsTrue(account.Url.Equals("ImgurAPIDotNet", StringComparison.OrdinalIgnoreCase));
         }
@@ -29,7 +31,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var account = await endpoint.GetAccountAsync("sarah");
+            var account = await endpoint.GetAccountAsync("sarah").ConfigureAwait(false);
 
             Assert.IsTrue("sarah".Equals(account.Url, StringComparison.OrdinalIgnoreCase));
         }
@@ -41,7 +43,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var settings = await endpoint.GetAccountSettingsAsync();
+            var settings = await endpoint.GetAccountSettingsAsync().ConfigureAwait(false);
 
             Assert.IsFalse(settings.PublicImages);
         }
@@ -54,7 +56,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            await endpoint.SendVerificationEmailAsync();
+            await endpoint.SendVerificationEmailAsync().ConfigureAwait(false);
         }
 
         [TestMethod]
@@ -67,7 +69,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
             var updated =
                 await
                     endpoint.UpdateAccountSettingsAsync("ImgurClient_" + DateTimeOffset.UtcNow, false,
-                        albumPrivacy: AlbumPrivacy.Hidden);
+                        albumPrivacy: AlbumPrivacy.Hidden).ConfigureAwait(false);
 
             Assert.IsTrue(updated);
         }
@@ -79,7 +81,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var verified = await endpoint.VerifyEmailAsync();
+            var verified = await endpoint.VerifyEmailAsync().ConfigureAwait(false);
 
             Assert.IsTrue(verified);
         }

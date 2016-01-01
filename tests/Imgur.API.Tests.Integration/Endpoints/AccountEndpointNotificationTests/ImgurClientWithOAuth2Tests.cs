@@ -4,6 +4,8 @@ using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointNotificationTests
 {
     [TestClass]
@@ -16,7 +18,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointNotificationTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var notifications = await endpoint.GetNotificationsAsync(false);
+            var notifications = await endpoint.GetNotificationsAsync(false).ConfigureAwait(false);
 
             Assert.IsNotNull(notifications);
             Assert.IsTrue(notifications.Replies.Any());

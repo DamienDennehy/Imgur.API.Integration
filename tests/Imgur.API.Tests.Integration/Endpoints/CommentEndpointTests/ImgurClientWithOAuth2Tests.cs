@@ -5,6 +5,8 @@ using Imgur.API.Endpoints.Impl;
 using Imgur.API.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
 {
     [TestClass]
@@ -17,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.GetCommentAsync("540468501");
+            var comment = await endpoint.GetCommentAsync("540468501").ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
             Assert.AreEqual(540468501, comment.Id);
@@ -30,7 +32,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.GetRepliesAsync("540468501");
+            var comment = await endpoint.GetRepliesAsync("540468501").ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
             Assert.IsTrue(comment.Children.Any());
@@ -43,7 +45,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5");
+            var comment = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5").ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
         }
@@ -55,7 +57,10 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.CreateCommentAsync("Create Comment with Parent", "BJRWQw5", "540767605");
+            var comment =
+                await
+                    endpoint.CreateCommentAsync("Create Comment with Parent", "BJRWQw5", "540767605")
+                        .ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
         }
@@ -67,7 +72,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.CreateReplyAsync("Create Reply", "BJRWQw5", "540767605");
+            var comment = await endpoint.CreateReplyAsync("Create Reply", "BJRWQw5", "540767605").ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
         }
@@ -79,35 +84,39 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5");
-            var deleted = await endpoint.DeleteCommentAsync(comment.Id.ToString());
+            var commentId = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5").ConfigureAwait(false);
+            var deleted = await endpoint.DeleteCommentAsync(commentId.ToString()).ConfigureAwait(false);
 
             Assert.IsTrue(deleted);
         }
 
         [TestMethod]
         [TestCategory("CommentEndpoint")]
-        public async Task VoteCommentAsync_IsTrue()
+        public async Task VoteCommentAsync_AreEqual()
         {
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5");
-            comment = await endpoint.GetCommentAsync("540468501");
-            var voted = await endpoint.VoteCommentAsync(comment.Id.ToString(), Vote.Down);
-            comment = await endpoint.GetCommentAsync("540468501");
+            var commentId = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5").ConfigureAwait(false);
+            var comment = await endpoint.GetCommentAsync(commentId.ToString()).ConfigureAwait(false);
+
+            Assert.AreEqual(VoteOption.Up, comment.Vote);
+
+            var voted = await endpoint.VoteCommentAsync(commentId.ToString(), VoteOption.Down).ConfigureAwait(false);
+            comment = await endpoint.GetCommentAsync(commentId.ToString()).ConfigureAwait(false);
 
             Assert.IsTrue(voted);
-            Assert.IsTrue(comment.Vote == Vote.Down);
+            Assert.AreEqual(VoteOption.Down, comment.Vote);
         }
 
-        //Running the ReportComment method may cause the account to be banned?
-        //[TestMethod]
-        //[TestCategory("CommentEndpoint")]
-        //public async Task ReportCommentAsync_IsTrue()
-        //{
-        //    var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
         //    var endpoint = new CommentEndpoint(client);
+        //    var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+        //{
+        //public async Task ReportCommentAsync_IsTrue()
+        //[TestCategory("CommentEndpoint")]
+        //[TestMethod]
+
+        //Running the ReportComment method may cause the account to be banned?
 
         //    var comment = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5");
         //    var reported = await endpoint.ReportCommentAsync(comment.Id.ToString(), ReportReason.DoesNotBelong);

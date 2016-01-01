@@ -4,6 +4,8 @@ using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
 {
     [TestClass]
@@ -16,7 +18,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var submissions = await endpoint.GetAccountFavoritesAsync();
+            var submissions = await endpoint.GetAccountFavoritesAsync().ConfigureAwait(false);
 
             Assert.IsTrue(submissions.Any());
         }
@@ -28,7 +30,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var favourites = await endpoint.GetAccountGalleryFavoritesAsync();
+            var favourites = await endpoint.GetAccountGalleryFavoritesAsync().ConfigureAwait(false);
 
             Assert.IsTrue(favourites.Any());
         }
@@ -40,7 +42,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var submissions = await endpoint.GetAccountSubmissionsAsync();
+            var submissions = await endpoint.GetAccountSubmissionsAsync().ConfigureAwait(false);
 
             Assert.IsTrue(submissions.Any());
         }
@@ -52,7 +54,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var profile = await endpoint.GetGalleryProfileAsync();
+            var profile = await endpoint.GetGalleryProfileAsync().ConfigureAwait(false);
 
             Assert.IsNotNull(profile);
         }

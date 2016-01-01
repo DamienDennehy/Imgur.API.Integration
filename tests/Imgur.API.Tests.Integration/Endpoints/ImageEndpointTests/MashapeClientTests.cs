@@ -5,6 +5,8 @@ using Imgur.API.Endpoints.Impl;
 using Imgur.API.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
 {
     [TestClass]
@@ -15,7 +17,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new ImageEndpoint(client);
 
-            var expected = await endpoint.DeleteImageAsync(actualImage.DeleteHash);
+            var expected = await endpoint.DeleteImageAsync(actualImage.DeleteHash).ConfigureAwait(false);
 
             Assert.IsTrue(expected);
         }
@@ -25,7 +27,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new ImageEndpoint(client);
 
-            var expectedImage = await endpoint.GetImageAsync(actualImage.Id);
+            var expectedImage = await endpoint.GetImageAsync(actualImage.Id).ConfigureAwait(false);
 
             Assert.AreEqual(actualImage.Id, expectedImage.Id);
             Assert.AreEqual(actualImage.Title, expectedImage.Title);
@@ -50,7 +52,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new ImageEndpoint(client);
 
-            var expected = await endpoint.UpdateImageAsync(actualImage.DeleteHash, "Ti", "De");
+            var expected = await endpoint.UpdateImageAsync(actualImage.DeleteHash, "Ti", "De").ConfigureAwait(false);
 
             Assert.IsTrue(expected);
         }
@@ -63,15 +65,18 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
             var endpoint = new ImageEndpoint(client);
 
             var file = File.ReadAllBytes("banana.gif");
-            var image = await endpoint.UploadImageBinaryAsync(file, null, "binary test title!", "binary test desc!");
+            var image =
+                await
+                    endpoint.UploadImageBinaryAsync(file, null, "binary test title!", "binary test desc!")
+                        .ConfigureAwait(false);
 
             Assert.IsFalse(string.IsNullOrEmpty(image.Id));
             Assert.AreEqual("binary test title!", image.Title);
             Assert.AreEqual("binary test desc!", image.Description);
 
-            await GetImageAsync_WithImage_AreEqual(image);
-            await UpdateImageAsync_WithImage_AreEqual(image);
-            await DeleteImageAsync_WithImage_IsTrue(image);
+            await GetImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
+            await UpdateImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
+            await DeleteImageAsync_WithImage_IsTrue(image).ConfigureAwait(false);
         }
 
         [TestMethod]
@@ -80,20 +85,23 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
         {
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new ImageEndpoint(client);
-            IImage image = null;
+            IImage image;
 
             using (var fs = new FileStream("banana.gif", FileMode.Open))
             {
-                image = await endpoint.UploadImageStreamAsync(fs, null, "stream test title!", "stream test desc!");
+                image =
+                    await
+                        endpoint.UploadImageStreamAsync(fs, null, "stream test title!", "stream test desc!")
+                            .ConfigureAwait(false);
             }
 
             Assert.IsFalse(string.IsNullOrEmpty(image.Id));
             Assert.AreEqual("stream test title!", image.Title);
             Assert.AreEqual("stream test desc!", image.Description);
 
-            await GetImageAsync_WithImage_AreEqual(image);
-            await UpdateImageAsync_WithImage_AreEqual(image);
-            await DeleteImageAsync_WithImage_IsTrue(image);
+            await GetImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
+            await UpdateImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
+            await DeleteImageAsync_WithImage_IsTrue(image).ConfigureAwait(false);
         }
 
         [TestMethod]
@@ -106,15 +114,15 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
             var image =
                 await
                     endpoint.UploadImageUrlAsync("http://i.imgur.com/Eg71tvs.gif", null, "url test title!",
-                        "url test desc!");
+                        "url test desc!").ConfigureAwait(false);
 
             Assert.IsFalse(string.IsNullOrEmpty(image.Id));
             Assert.AreEqual("url test title!", image.Title);
             Assert.AreEqual("url test desc!", image.Description);
 
-            await GetImageAsync_WithImage_AreEqual(image);
-            await UpdateImageAsync_WithImage_AreEqual(image);
-            await DeleteImageAsync_WithImage_IsTrue(image);
+            await GetImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
+            await UpdateImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
+            await DeleteImageAsync_WithImage_IsTrue(image).ConfigureAwait(false);
         }
     }
 }

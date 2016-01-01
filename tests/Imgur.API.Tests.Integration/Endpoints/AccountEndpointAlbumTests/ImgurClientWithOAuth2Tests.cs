@@ -4,6 +4,8 @@ using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
 {
     [TestClass]
@@ -17,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var deleted = await endpoint.DeleteAlbumAsync("lzpoZ7a5IPrxvVe");
+            var deleted = await endpoint.DeleteAlbumAsync("lzpoZ7a5IPrxvVe").ConfigureAwait(false);
 
             Assert.IsTrue(deleted);
         }
@@ -29,7 +31,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var album = await endpoint.GetAlbumAsync("cuta6");
+            var album = await endpoint.GetAlbumAsync("cuta6").ConfigureAwait(false);
 
             Assert.IsNotNull(album);
         }
@@ -41,7 +43,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var albums = await endpoint.GetAlbumCountAsync();
+            var albums = await endpoint.GetAlbumCountAsync().ConfigureAwait(false);
 
             Assert.IsTrue(albums >= 1);
         }
@@ -53,7 +55,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var albums = await endpoint.GetAlbumIdsAsync();
+            var albums = await endpoint.GetAlbumIdsAsync().ConfigureAwait(false);
 
             Assert.IsTrue(albums.Any());
         }
@@ -65,7 +67,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var albums = await endpoint.GetAlbumsAsync();
+            var albums = await endpoint.GetAlbumsAsync().ConfigureAwait(false);
 
             Assert.IsTrue(albums.Any());
         }

@@ -4,6 +4,8 @@ using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
 {
     [TestClass]
@@ -17,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var deleted = await endpoint.DeleteImageAsync("ra06GZN", "sarah");
+            var deleted = await endpoint.DeleteImageAsync("ra06GZN", "sarah").ConfigureAwait(false);
 
             Assert.IsTrue(deleted);
         }
@@ -29,7 +31,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var image = await endpoint.GetImageAsync("BJRWQw5");
+            var image = await endpoint.GetImageAsync("BJRWQw5").ConfigureAwait(false);
 
             Assert.IsNotNull(image);
         }
@@ -41,7 +43,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var imageCount = await endpoint.GetImageCountAsync();
+            var imageCount = await endpoint.GetImageCountAsync().ConfigureAwait(false);
 
             Assert.IsTrue(imageCount > 1);
         }
@@ -53,7 +55,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var images = await endpoint.GetImageIdsAsync();
+            var images = await endpoint.GetImageIdsAsync().ConfigureAwait(false);
 
             Assert.IsTrue(images.Count() > 1);
         }
@@ -65,7 +67,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var images = await endpoint.GetImagesAsync();
+            var images = await endpoint.GetImagesAsync().ConfigureAwait(false);
 
             Assert.IsTrue(images.Any());
         }

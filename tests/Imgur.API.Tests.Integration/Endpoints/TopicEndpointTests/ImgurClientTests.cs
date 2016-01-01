@@ -1,15 +1,16 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Imgur.API.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
 {
     [TestClass]
-    public class ImgurClientTests: TestBase
+    public class ImgurClientTests : TestBase
     {
         [TestMethod]
         [TestCategory("TopicEndpoint")]
@@ -18,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
             var client = new ImgurClient(ClientId, ClientSecret);
             var endpoint = new TopicEndpoint(client);
 
-            var topics = await endpoint.GetDefaultTopicsAsync();
+            var topics = await endpoint.GetDefaultTopicsAsync().ConfigureAwait(false);
 
             Assert.IsTrue(topics.Any());
         }
@@ -30,7 +31,10 @@ namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
             var client = new ImgurClient(ClientId, ClientSecret);
             var endpoint = new TopicEndpoint(client);
 
-            var items = await endpoint.GetGalleryTopicItemsAsync("Current Events", CustomGallerySortOrder.Top, Window.Day);
+            var items =
+                await
+                    endpoint.GetGalleryTopicItemsAsync("Current Events", CustomGallerySortOrder.Top, TimeWindow.Day)
+                        .ConfigureAwait(false);
 
             Assert.IsTrue(items.Any());
         }
@@ -42,7 +46,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
             var client = new ImgurClient(ClientId, ClientSecret);
             var endpoint = new TopicEndpoint(client);
 
-            var item = await endpoint.GetGalleryTopicItemAsync("bjeTa", "Current Events");
+            var item = await endpoint.GetGalleryTopicItemAsync("bjeTa", "Current Events").ConfigureAwait(false);
 
             Assert.IsNotNull(item);
         }

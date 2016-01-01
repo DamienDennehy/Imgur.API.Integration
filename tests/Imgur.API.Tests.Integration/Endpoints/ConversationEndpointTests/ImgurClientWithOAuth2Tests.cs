@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// ReSharper disable ExceptionNotDocumented
+
 namespace Imgur.API.Tests.Integration.Endpoints.ConversationEndpointTests
 {
     [TestClass]
-    public class ImgurClientWithOAuth2Tests: TestBase
+    public class ImgurClientWithOAuth2Tests : TestBase
     {
         [TestMethod]
         [TestCategory("ConversationEndpoint")]
@@ -16,20 +17,21 @@ namespace Imgur.API.Tests.Integration.Endpoints.ConversationEndpointTests
         {
             var client = new ImgurClient("123", "1234", OAuth2Token);
             var endpoint = new ConversationEndpoint(client);
-            string message = DateTime.UtcNow.ToString();
-            var created = await endpoint.CreateConversationAsync("imgurapidotnet", message);
+            string message = $"{DateTime.UtcNow}";
+            var created = await endpoint.CreateConversationAsync("imgurapidotnet", message).ConfigureAwait(false);
 
             Assert.IsTrue(created);
 
-            var conversations = await endpoint.GetConversationsAsync();
-            
+            var conversations = await endpoint.GetConversationsAsync().ConfigureAwait(false);
+
             foreach (var conversation in conversations)
             {
-                var conversationWithMessages = await endpoint.GetConversationAsync(conversation.Id.ToString());
+                var conversationWithMessages =
+                    await endpoint.GetConversationAsync(conversation.Id.ToString()).ConfigureAwait(false);
 
                 Assert.AreEqual(message, conversationWithMessages.LastMessagePreview);
 
-                var deleted = await endpoint.DeleteConversationAsync(conversation.Id.ToString());
+                var deleted = await endpoint.DeleteConversationAsync(conversation.Id.ToString()).ConfigureAwait(false);
 
                 Assert.IsTrue(deleted);
             }
