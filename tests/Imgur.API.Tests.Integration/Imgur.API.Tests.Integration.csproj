@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Imgur.API, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Imgur.API.3.6.0-build169\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\Imgur.API.dll</HintPath>
+      <HintPath>..\..\packages\Imgur.API.3.6.0-build171\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\Imgur.API.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -95,6 +95,30 @@
     <Compile Include="Endpoints\ConversationEndpointTests\ImgurClientWithOAuth2Tests.cs" />
     <Compile Include="Endpoints\CustomGalleryEndpointTests\MashapeClientWithOAuth2Tests.cs" />
     <Compile Include="Endpoints\CustomGalleryEndpointTests\ImgurClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointAlbumTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointAlbumTests\ImgurClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointCommentTests\MashapeClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointCommentTests\ImgurClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointCommentTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointCommentTests\ImgurClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointImageTests\ImgurClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointImageTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointMemeTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointMemeTests\ImgurClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointSubredditTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointSubredditTests\ImgurClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointTagTests\MashapeClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointTagTests\ImgurClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointTagTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointTagTests\ImgurClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointTests\MashapeClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointTests\ImgurClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointTests\ImgurClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointVoteTests\MashapeClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointVoteTests\ImgurClientWithOAuth2Tests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointVoteTests\MashapeClientTests.cs" />
+    <Compile Include="Endpoints\GalleryEndpointVoteTests\ImgurClientTests.cs" />
     <Compile Include="Endpoints\ImageEndpointTests\ImgurClientTests.cs" />
     <Compile Include="Endpoints\ImageEndpointTests\ImgurClientWithOAuth2Tests.cs" />
     <Compile Include="Endpoints\ImageEndpointTests\MashapeClientTests.cs" />
@@ -117,16 +141,7 @@
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Endpoints\GalleryEndpointAlbumTests\" />
-    <Folder Include="Endpoints\GalleryEndpointCommentTests\" />
-    <Folder Include="Endpoints\GalleryEndpointImageTests\" />
-    <Folder Include="Endpoints\GalleryEndpointIMemeTests\" />
-    <Folder Include="Endpoints\GalleryEndpointSubredditTests\" />
-    <Folder Include="Endpoints\GalleryEndpointTagTests\" />
-    <Folder Include="Endpoints\GalleryEndpointTests\" />
-    <Folder Include="Endpoints\GalleryEndpointVoteTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Banana.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
