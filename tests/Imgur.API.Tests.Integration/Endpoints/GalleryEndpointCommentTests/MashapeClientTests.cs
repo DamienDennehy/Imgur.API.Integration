@@ -18,7 +18,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
-            var comment = await endpoint.GetGalleryItemCommentAsync("542787274", "9cYFV").ConfigureAwait(false);
+            var comment = await endpoint.GetGalleryItemCommentAsync(542787274, "9cYFV").ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
         }

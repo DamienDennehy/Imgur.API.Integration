@@ -19,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
             var client = new ImgurClient(ClientId, ClientSecret);
             var endpoint = new AccountEndpoint(client);
 
-            var comment = await endpoint.GetCommentAsync("300731088", "sarah").ConfigureAwait(false);
+            var comment = await endpoint.GetCommentAsync(300731088, "sarah").ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
         }

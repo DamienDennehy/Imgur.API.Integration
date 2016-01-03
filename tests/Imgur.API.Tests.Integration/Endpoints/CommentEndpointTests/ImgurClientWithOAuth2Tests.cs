@@ -19,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.GetCommentAsync("540468501").ConfigureAwait(false);
+            var comment = await endpoint.GetCommentAsync(540468501).ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
             Assert.AreEqual(540468501, comment.Id);
@@ -32,7 +32,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.GetRepliesAsync("540468501").ConfigureAwait(false);
+            var comment = await endpoint.GetRepliesAsync(540468501).ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
             Assert.IsTrue(comment.Children.Any());
@@ -85,7 +85,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var endpoint = new CommentEndpoint(client);
 
             var commentId = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5").ConfigureAwait(false);
-            var deleted = await endpoint.DeleteCommentAsync(commentId.ToString()).ConfigureAwait(false);
+            var deleted = await endpoint.DeleteCommentAsync(commentId).ConfigureAwait(false);
 
             Assert.IsTrue(deleted);
         }
@@ -98,11 +98,11 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var endpoint = new CommentEndpoint(client);
 
             var commentId = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5").ConfigureAwait(false);
-            var comment = await endpoint.GetCommentAsync(commentId.ToString()).ConfigureAwait(false);
+            var comment = await endpoint.GetCommentAsync(commentId).ConfigureAwait(false);
 
             Assert.AreEqual(VoteOption.Up, comment.Vote);
 
-            var voted = await endpoint.VoteCommentAsync(commentId.ToString(), VoteOption.Down).ConfigureAwait(false);
+            var voted = await endpoint.VoteCommentAsync(commentId, VoteOption.Down).ConfigureAwait(false);
        
             Assert.IsNotNull(voted);
         }

@@ -18,7 +18,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.GetCommentAsync("540468501").ConfigureAwait(false);
+            var comment = await endpoint.GetCommentAsync(540468501).ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
             Assert.AreEqual(540468501, comment.Id);
@@ -31,7 +31,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
             var endpoint = new CommentEndpoint(client);
 
-            var comment = await endpoint.GetRepliesAsync("540468501").ConfigureAwait(false);
+            var comment = await endpoint.GetRepliesAsync(540468501).ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
             Assert.IsTrue(comment.Children.Any());

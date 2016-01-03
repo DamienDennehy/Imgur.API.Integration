@@ -19,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
             var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var deleted = await endpoint.DeleteCommentAsync("487153732").ConfigureAwait(false);
+            var deleted = await endpoint.DeleteCommentAsync(487153732).ConfigureAwait(false);
 
             Assert.IsTrue(deleted);
         }
