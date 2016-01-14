@@ -1,21 +1,8 @@
-version: 1.0.0-build{build}
-environment:
-  VisualStudioVersion: 14.0
+version: 3.7.0-build{build}
 install:
-- set PATH=C:\Program Files (x86)\MSBuild\14.0\Bin;%PATH%
 - cmd: nuget sources add -Name MyGet-CI -Source http://myget.org/f/damiendennehy/
 - nuget restore
-assembly_info:
-  patch: true
-  file: '**\AssemblyInfo.*'
-  assembly_version: 1.0.0
-  assembly_file_version: 1.0.0.{build}
-  assembly_informational_version: '1.0.0-build{build}'
 build:
-  project: Imgur.API.Integration.sln
-  publish_nuget: true
-  publish_nuget_symbols: true
-  include_nuget_references: true
   verbosity: minimal
 test:
   assemblies: '**\*.tests.dll'
