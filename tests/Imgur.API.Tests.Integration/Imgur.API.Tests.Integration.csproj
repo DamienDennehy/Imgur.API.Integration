@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Imgur.API, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Imgur.API.3.7.0-build244\lib\net45\Imgur.API.dll</HintPath>
+      <HintPath>..\..\packages\Imgur.API.3.7.0-build253\lib\net45\Imgur.API.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
