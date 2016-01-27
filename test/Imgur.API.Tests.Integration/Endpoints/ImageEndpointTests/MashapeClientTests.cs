@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
     {
         public async Task DeleteImageAsync_WithImage_IsTrue(IImage actualImage)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new ImageEndpoint(client);
 
             var expected = await endpoint.DeleteImageAsync(actualImage.DeleteHash).ConfigureAwait(false);
@@ -24,7 +24,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
 
         public async Task GetImageAsync_WithImage_AreEqual(IImage actualImage)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new ImageEndpoint(client);
 
             var expectedImage = await endpoint.GetImageAsync(actualImage.Id).ConfigureAwait(false);
@@ -49,7 +49,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
 
         public async Task UpdateImageAsync_WithImage_AreEqual(IImage actualImage)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new ImageEndpoint(client);
 
             var expected = await endpoint.UpdateImageAsync(actualImage.DeleteHash, "Ti", "De").ConfigureAwait(false);
@@ -61,7 +61,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
         [TestCategory("ImageEndpoint")]
         public async Task UploadImageBinaryAsync_WithImage_AreEqual()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new ImageEndpoint(client);
 
             var file = File.ReadAllBytes("banana.gif");
@@ -83,7 +83,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
         [TestCategory("ImageEndpoint")]
         public async Task UploadImageStreamAsync_WithImage_AreEqual()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new ImageEndpoint(client);
             IImage image;
 
@@ -108,7 +108,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
         [TestCategory("ImageEndpoint")]
         public async Task UploadImageUrlAsync_WithImage_AreEqual()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new ImageEndpoint(client);
 
             var image =

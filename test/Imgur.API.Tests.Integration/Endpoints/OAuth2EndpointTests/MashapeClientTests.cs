@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.OAuth2EndpointTests
         [ExpectedException(typeof (ImgurException))]
         public async Task GetTokenByCodeAsync_SetCodeInvalid_ThrowsImgurException()
         {
-            var authentication = new MashapeClient(ClientId, ClientSecret, MashapeKey);
+            var authentication = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new OAuth2Endpoint(authentication);
             await endpoint.GetTokenByCodeAsync("abc").ConfigureAwait(false);
         }
@@ -24,9 +24,9 @@ namespace Imgur.API.Tests.Integration.Endpoints.OAuth2EndpointTests
         [TestCategory("OAuth2Endpoint")]
         public async Task GetTokenByRefreshTokenAsync_SetToken_IsNotNull()
         {
-            var authentication = new MashapeClient(ClientId, ClientSecret, MashapeKey);
+            var authentication = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new OAuth2Endpoint(authentication);
-            var token = await endpoint.GetTokenByRefreshTokenAsync(RefreshToken).ConfigureAwait(false);
+            var token = await endpoint.GetTokenByRefreshTokenAsync(Settings.RefreshToken).ConfigureAwait(false);
 
             Assert.IsNotNull(token);
             Assert.IsFalse(string.IsNullOrWhiteSpace(token.AccessToken));

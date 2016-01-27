@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.NotificationEndpointTests
         [TestCategory("NotificationEndpoint")]
         public async Task GetNotificationsAsync_AreEqual()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new NotificationEndpoint(client);
 
             var notifications = await endpoint.GetNotificationsAsync().ConfigureAwait(false);
@@ -27,7 +27,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.NotificationEndpointTests
         [TestCategory("NotificationEndpoint")]
         public async Task GetNotificationAsync_AreEqual()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new NotificationEndpoint(client);
 
             var notification = await endpoint.GetNotificationAsync("322888961").ConfigureAwait(false);
@@ -39,7 +39,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.NotificationEndpointTests
         [TestCategory("NotificationEndpoint")]
         public async Task MarkNotificationViewedAsync_IsFalse()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new NotificationEndpoint(client);
 
             var marked = await endpoint.MarkNotificationViewedAsync("322888961").ConfigureAwait(false);
@@ -51,7 +51,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.NotificationEndpointTests
         [TestCategory("NotificationEndpoint")]
         public async Task MarkNotificationsViewedAsync_IsFalse()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new NotificationEndpoint(client);
 
             var marked =

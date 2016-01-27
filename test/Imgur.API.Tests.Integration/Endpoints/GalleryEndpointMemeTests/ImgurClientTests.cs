@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointMemeTests
         [TestCategory("GalleryEndpoint")]
         public async Task GetMemesSubGalleryAsync_Any()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var memes = await endpoint.GetMemesSubGalleryAsync().ConfigureAwait(false);
@@ -27,7 +27,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointMemeTests
         [TestCategory("GalleryEndpoint")]
         public async Task GetMemesSubGalleryImageAsync_IsNotNull()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var meme = await endpoint.GetMemesSubGalleryImageAsync("qjHJPWZ").ConfigureAwait(false);

@@ -16,7 +16,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
         [ExpectedException(typeof (ImgurException))]
         public async Task DeleteImageAsync_ThrowsImgurException()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var deleted = await endpoint.DeleteImageAsync("ra06GZN", "sarah").ConfigureAwait(false);
@@ -28,7 +28,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
         [TestCategory("AccountEndpointImage")]
         public async Task GetImageAsync_IsNotNull()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var image = await endpoint.GetImageAsync("BJRWQw5").ConfigureAwait(false);
@@ -40,7 +40,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
         [TestCategory("AccountEndpointImage")]
         public async Task GetImageCountAsync_Any()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var imageCount = await endpoint.GetImageCountAsync().ConfigureAwait(false);
@@ -52,7 +52,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
         [TestCategory("AccountEndpointImage")]
         public async Task GetImageIdsAsync_Any()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var images = await endpoint.GetImageIdsAsync().ConfigureAwait(false);
@@ -64,7 +64,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
         [TestCategory("AccountEndpointImage")]
         public async Task GetImagesAsync_Any()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var images = await endpoint.GetImagesAsync().ConfigureAwait(false);

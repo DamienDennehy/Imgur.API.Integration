@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointAlbumTests
         [TestCategory("GalleryEndpoint")]
         public async Task GetGalleryAlbumAsync_AreEqual()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.GetGalleryAlbumAsync("9cYFV").ConfigureAwait(false);

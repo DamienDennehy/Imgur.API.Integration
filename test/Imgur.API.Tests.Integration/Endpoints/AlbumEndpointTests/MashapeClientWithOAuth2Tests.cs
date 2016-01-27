@@ -16,7 +16,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
     {
         public async Task AddAlbumImagesAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
             var updated =
@@ -31,7 +31,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
         [TestCategory("AlbumEndpoint")]
         public async Task CreateAlbumAsync_IsNotNull()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
             var album = await endpoint.CreateAlbumAsync(
@@ -57,7 +57,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task DeleteAlbumAsync_WithImage_IsTrue(IAlbum actualAlbum)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
             var deleted = await endpoint.DeleteAlbumAsync(actualAlbum.Id).ConfigureAwait(false);
@@ -67,7 +67,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task FavoriteAlbumAsync_WithImage_IsFalse(IAlbum actualAlbum)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
             var favorited = await endpoint.FavoriteAlbumAsync(actualAlbum.Id).ConfigureAwait(false);
@@ -77,7 +77,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task FavoriteAlbumAsync_WithImage_IsTrue(IAlbum actualAlbum)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
             var favorited = await endpoint.FavoriteAlbumAsync(actualAlbum.Id).ConfigureAwait(false);
@@ -87,7 +87,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task GetAlbumAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
             var album = await endpoint.GetAlbumAsync(actualAlbum.Id).ConfigureAwait(false);
@@ -97,7 +97,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task GetAlbumImageAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
             var image = await endpoint.GetAlbumImageAsync("uH3kfZP", actualAlbum.Id).ConfigureAwait(false);
@@ -108,7 +108,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task GetAlbumImagesAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
             var albums = await endpoint.GetAlbumImagesAsync(actualAlbum.Id).ConfigureAwait(false);
@@ -118,7 +118,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task RemoveAlbumImagesAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
             var updated =
@@ -131,7 +131,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task SetAlbumImagesAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
             var updated =
@@ -144,7 +144,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task UpdateAlbumAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
             var updated = await endpoint.UpdateAlbumAsync(actualAlbum.Id, "TestTitle").ConfigureAwait(false);

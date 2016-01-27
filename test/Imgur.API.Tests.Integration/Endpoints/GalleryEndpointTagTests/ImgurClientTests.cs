@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTagTests
         [TestCategory("GalleryEndpoint")]
         public async Task GetGalleryItemTagsAsync_Any()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var tags = await endpoint.GetGalleryItemTagsAsync("7EhqwbF").ConfigureAwait(false);
@@ -28,7 +28,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTagTests
         [TestCategory("GalleryEndpoint")]
         public async Task GetGalleryTagAsync_IsNotNull()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var tag = await endpoint.GetGalleryTagAsync("gaming").ConfigureAwait(false);
@@ -41,7 +41,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTagTests
         [TestCategory("GalleryEndpoint")]
         public async Task GetGalleryTagImageAsync_IsNotNull()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var image = await endpoint.GetGalleryTagImageAsync("LTUEhhD", "gaming").ConfigureAwait(false);

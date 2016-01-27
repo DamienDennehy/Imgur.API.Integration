@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointSubredditTests
         [TestCategory("GalleryEndpoint")]
         public async Task GetSubredditGalleryAsync_Any()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var subreddit = await endpoint.GetSubredditGalleryAsync("gaming").ConfigureAwait(false);
@@ -27,7 +27,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointSubredditTests
         [TestCategory("GalleryEndpoint")]
         public async Task GetSubredditImageAsync_IsNotNull()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var image = await endpoint.GetSubredditImageAsync("wPWniy2", "gaming").ConfigureAwait(false);

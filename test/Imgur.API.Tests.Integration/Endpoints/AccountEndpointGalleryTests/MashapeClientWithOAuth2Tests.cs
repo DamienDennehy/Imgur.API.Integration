@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
         [TestCategory("AccountEndpointGallery")]
         public async Task GetAccountFavoritesAsync_Any()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var submissions = await endpoint.GetAccountFavoritesAsync().ConfigureAwait(false);
@@ -27,7 +27,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
         [TestCategory("AccountEndpointGallery")]
         public async Task GetAccountGalleryFavoritesAsync_Any()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var favourites = await endpoint.GetAccountGalleryFavoritesAsync().ConfigureAwait(false);
@@ -39,7 +39,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
         [TestCategory("AccountEndpointGallery")]
         public async Task GetAccountSubmissionsAsync_Any()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var submissions = await endpoint.GetAccountSubmissionsAsync().ConfigureAwait(false);
@@ -51,7 +51,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
         [TestCategory("AccountEndpointGallery")]
         public async Task GetGalleryProfileAsync_IsNotNull()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var profile = await endpoint.GetGalleryProfileAsync().ConfigureAwait(false);

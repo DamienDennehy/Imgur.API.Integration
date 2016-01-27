@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         [TestCategory("CommentEndpoint")]
         public async Task GetCommentAsync_AreEqual()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new CommentEndpoint(client);
 
             var comment = await endpoint.GetCommentAsync(540468501).ConfigureAwait(false);
@@ -28,7 +28,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         [TestCategory("CommentEndpoint")]
         public async Task GetRepliesAsync_AnyChildren()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new CommentEndpoint(client);
 
             var comment = await endpoint.GetRepliesAsync(540468501).ConfigureAwait(false);

@@ -16,7 +16,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
         [TestCategory("AccountEndpoint")]
         public async Task GetAccountAsync_WithDefaultUsername_AreEqual()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var account = await endpoint.GetAccountAsync().ConfigureAwait(false);
@@ -28,7 +28,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
         [TestCategory("AccountEndpoint")]
         public async Task GetAccountAsync_WithUsername_AreEqual()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var account = await endpoint.GetAccountAsync("sarah").ConfigureAwait(false);
@@ -40,7 +40,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
         [TestCategory("AccountEndpoint")]
         public async Task GetAccountSettingsAsync_IsTrue()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var settings = await endpoint.GetAccountSettingsAsync().ConfigureAwait(false);
@@ -53,7 +53,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
         [ExpectedException(typeof (ImgurException))]
         public async Task SendVerificationEmailAsync_IsTrue()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             await endpoint.SendVerificationEmailAsync().ConfigureAwait(false);
@@ -63,7 +63,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
         [TestCategory("AccountEndpoint")]
         public async Task UpdateAccountSettingsAsync_IsTrue()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var updated =
@@ -78,7 +78,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
         [TestCategory("AccountEndpoint")]
         public async Task VerifyEmailAsync_IsTrue()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var verified = await endpoint.VerifyEmailAsync().ConfigureAwait(false);

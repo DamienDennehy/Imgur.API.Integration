@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
         [TestCategory("AccountEndpointGallery")]
         public async Task GetAccountGalleryFavoritesAsync_Any()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AccountEndpoint(client);
 
             var favourites = await endpoint.GetAccountGalleryFavoritesAsync("sarah").ConfigureAwait(false);
@@ -27,7 +27,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
         [TestCategory("AccountEndpointGallery")]
         public async Task GetAccountSubmissionsAsync_Any()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AccountEndpoint(client);
 
             var submissions = await endpoint.GetAccountSubmissionsAsync("sarah").ConfigureAwait(false);
@@ -39,7 +39,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
         [TestCategory("AccountEndpointGallery")]
         public async Task GetGalleryProfileAsync_AnyTrophies()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AccountEndpoint(client);
 
             var profile = await endpoint.GetGalleryProfileAsync("sarah").ConfigureAwait(false);

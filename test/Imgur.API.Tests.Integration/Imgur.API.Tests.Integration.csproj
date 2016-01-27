@@ -136,11 +136,12 @@
     <Compile Include="Endpoints\RateLimitEndpointTests\ImgurClientTests.cs" />
     <Compile Include="Endpoints\TopicEndpointTests\MashapeClientTests.cs" />
     <Compile Include="Endpoints\TopicEndpointTests\ImgurClientTests.cs" />
+    <Compile Include="ImgurApiSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="config.json" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

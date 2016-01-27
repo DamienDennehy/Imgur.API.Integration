@@ -16,7 +16,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
     {
         public async Task AddAlbumImagesAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AlbumEndpoint(client);
 
             var updated =
@@ -31,7 +31,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
         [TestCategory("AlbumEndpoint")]
         public async Task CreateAlbumAsync_IsNotNull()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AlbumEndpoint(client);
 
             var album = await endpoint.CreateAlbumAsync(
@@ -55,7 +55,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task DeleteImageAsync_WithImage_IsTrue(IAlbum actualAlbum)
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AlbumEndpoint(client);
 
             var deleted = await endpoint.DeleteAlbumAsync(actualAlbum.DeleteHash).ConfigureAwait(false);
@@ -65,7 +65,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task GetAlbumAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AlbumEndpoint(client);
 
             var album = await endpoint.GetAlbumAsync(actualAlbum.Id).ConfigureAwait(false);
@@ -75,7 +75,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task GetAlbumImageAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AlbumEndpoint(client);
 
             var image = await endpoint.GetAlbumImageAsync("uH3kfZP", actualAlbum.Id).ConfigureAwait(false);
@@ -86,7 +86,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task GetAlbumImagesAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AlbumEndpoint(client);
 
             var albums = await endpoint.GetAlbumImagesAsync(actualAlbum.Id).ConfigureAwait(false);
@@ -96,7 +96,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task RemoveAlbumImagesAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AlbumEndpoint(client);
 
             var updated =
@@ -109,7 +109,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task SetAlbumImagesAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AlbumEndpoint(client);
 
             var updated =
@@ -122,7 +122,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
         public async Task UpdateAlbumAsync_WithAlbum_AreEqual(IAlbum actualAlbum)
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AlbumEndpoint(client);
 
             var updated = await endpoint.UpdateAlbumAsync(actualAlbum.DeleteHash, "TestTitle").ConfigureAwait(false);

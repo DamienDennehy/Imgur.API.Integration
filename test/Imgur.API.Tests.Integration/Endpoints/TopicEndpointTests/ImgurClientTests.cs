@@ -16,7 +16,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
         [TestCategory("TopicEndpoint")]
         public async Task GetDefaultTopicsAsync_Any()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new TopicEndpoint(client);
 
             var topics = await endpoint.GetDefaultTopicsAsync().ConfigureAwait(false);
@@ -28,7 +28,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
         [TestCategory("TopicEndpoint")]
         public async Task GetGalleryTopicItemsAsync_Any()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new TopicEndpoint(client);
 
             var items =
@@ -43,7 +43,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
         [TestCategory("TopicEndpoint")]
         public async Task GetGalleryTopicItemAsync_IsNotNull()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new TopicEndpoint(client);
 
             var item = await endpoint.GetGalleryTopicItemAsync("bjeTa", "Current Events").ConfigureAwait(false);

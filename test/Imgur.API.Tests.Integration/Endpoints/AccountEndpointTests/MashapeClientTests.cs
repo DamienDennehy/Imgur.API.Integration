@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
         [TestCategory("AccountEndpoint")]
         public async Task GetAccountAsync_WithUsername_AreEqual()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new AccountEndpoint(client);
 
             var account = await endpoint.GetAccountAsync("sarah").ConfigureAwait(false);

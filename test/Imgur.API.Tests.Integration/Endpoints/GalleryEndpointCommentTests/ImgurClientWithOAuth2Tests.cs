@@ -14,10 +14,13 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
         [TestCategory("GalleryEndpoint")]
         public async Task CreateGalleryItemCommentAsync_IsNotNull()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new GalleryEndpoint(client);
 
-            var comment = await endpoint.CreateGalleryItemCommentAsync("Create Comment from Gallery", "BJRWQw5").ConfigureAwait(false);
+            var comment =
+                await
+                    endpoint.CreateGalleryItemCommentAsync("Create Comment from Gallery", "BJRWQw5")
+                        .ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
         }
@@ -26,10 +29,13 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
         [TestCategory("GalleryEndpoint")]
         public async Task CreateGalleryItemCommentReplyAsync_IsNotNull()
         {
-            var client = new ImgurClient(ClientId, ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new GalleryEndpoint(client);
 
-            var comment = await endpoint.CreateGalleryItemCommentReplyAsync("Reply Comment from Gallery", "BJRWQw5", "550061341").ConfigureAwait(false);
+            var comment =
+                await
+                    endpoint.CreateGalleryItemCommentReplyAsync("Reply Comment from Gallery", "BJRWQw5", "550061341")
+                        .ConfigureAwait(false);
 
             Assert.IsNotNull(comment);
         }

@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.RateLimitEndpointTests
         [TestCategory("RateLimitEndpoint")]
         public async Task RateLimit_GetRateLimitWithMashapeClient_IsValidRateLimit()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new RateLimitEndpoint(client);
             var limit = await endpoint.GetRateLimitAsync().ConfigureAwait(false);
             Assert.IsNotNull(limit);
@@ -26,7 +26,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.RateLimitEndpointTests
         [TestCategory("RateLimitEndpoint")]
         public async Task RateLimit_GetRateLimitWithMashapeClientAndOAuth2Authentication_IsValidRateLimit()
         {
-            var client = new MashapeClient(ClientId, ClientSecret, MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
 
             var endpoint = new RateLimitEndpoint(client);
             var limit = await endpoint.GetRateLimitAsync().ConfigureAwait(false);

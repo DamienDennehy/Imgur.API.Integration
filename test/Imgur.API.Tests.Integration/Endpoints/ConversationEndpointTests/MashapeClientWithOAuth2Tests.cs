@@ -16,7 +16,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ConversationEndpointTests
         [TestCategory("ConversationEndpoint")]
         public async Task CreateConversationAsyncAndDeleteConversationAsync_IsTrue()
         {
-            var client = new MashapeClient("123", "1234", MashapeKey, OAuth2Token);
+            var client = new MashapeClient("123", "1234", Settings.MashapeKey, OAuth2Token);
             var endpoint = new ConversationEndpoint(client);
             string message = $"{DateTime.UtcNow}";
             var created = await endpoint.CreateConversationAsync("imgurapidotnet", message).ConfigureAwait(false);

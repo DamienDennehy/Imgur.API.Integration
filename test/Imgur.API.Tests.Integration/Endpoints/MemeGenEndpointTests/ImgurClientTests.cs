@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.MemeGenEndpointTests
         [TestCategory("MemeGenEndpoint")]
         public async Task GetDefaultMemesAsync_Any()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new MemeGenEndpoint(client);
 
             var memes = await endpoint.GetDefaultMemesAsync().ConfigureAwait(false);

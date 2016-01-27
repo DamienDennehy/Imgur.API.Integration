@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
         [TestCategory("GalleryEndpoint")]
         public async Task GetGalleryAsync_IsTrue()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.GetGalleryAsync().ConfigureAwait(false);
@@ -27,7 +27,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
         [TestCategory("GalleryEndpoint")]
         public async Task GetRandomGalleryAsync_IsTrue()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.GetRandomGalleryAsync().ConfigureAwait(false);
@@ -39,7 +39,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
         [TestCategory("GalleryEndpoint")]
         public async Task SearchGalleryAsync_IsTrue()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.SearchGalleryAsync("star wars").ConfigureAwait(false);
@@ -51,7 +51,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
         [TestCategory("GalleryEndpoint")]
         public async Task SearchGalleryAdvancedAsync_IsTrue()
         {
-            var client = new ImgurClient(ClientId, ClientSecret);
+            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.SearchGalleryAdvancedAsync("cats", qNot: "dogs").ConfigureAwait(false);
