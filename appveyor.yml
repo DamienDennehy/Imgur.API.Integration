@@ -1,11 +1,10 @@
-version: 3.7.0-build{build}
+version: 1.0.0-build{build}
 install:
 - cmd: nuget sources add -Name MyGet-CI -Source http://myget.org/f/damiendennehy/
 - nuget restore
 cache:
 - C:\Users\appveyor\.dnx\runtimes
 - C:\Users\appveyor\.dnx\packages
-- C:\projects\imgur-api-integration\packages
 build:
   verbosity: minimal
 test:
