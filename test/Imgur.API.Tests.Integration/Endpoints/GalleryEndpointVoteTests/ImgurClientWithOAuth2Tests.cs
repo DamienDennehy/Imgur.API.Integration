@@ -2,25 +2,24 @@
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Imgur.API.Enums;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointVoteTests
 {
-    [TestClass]
     public class ImgurClientWithOAuth2Tests : TestBase
     {
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task VoteGalleryItemAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task VoteGalleryItemAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new GalleryEndpoint(client);
 
             var voted = await endpoint.VoteGalleryItemAsync("7EhqwbF", VoteOption.Down).ConfigureAwait(false);
 
-            Assert.IsTrue(voted);
+            Assert.True(voted);
         }
     }
 }

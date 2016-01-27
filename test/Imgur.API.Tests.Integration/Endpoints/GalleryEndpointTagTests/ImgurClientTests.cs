@@ -2,17 +2,16 @@
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTagTests
 {
-    [TestClass]
     public class ImgurClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
         public async Task GetGalleryItemTagsAsync_Any()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
@@ -20,33 +19,33 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTagTests
 
             var tags = await endpoint.GetGalleryItemTagsAsync("7EhqwbF").ConfigureAwait(false);
 
-            Assert.IsNotNull(tags);
-            Assert.IsTrue(tags.Tags.Any());
+            Assert.NotNull(tags);
+            Assert.True(tags.Tags.Any());
         }
 
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task GetGalleryTagAsync_IsNotNull()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task GetGalleryTagAsync_NotNull()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var tag = await endpoint.GetGalleryTagAsync("gaming").ConfigureAwait(false);
 
-            Assert.IsNotNull(tag);
-            Assert.IsTrue(tag.Items.Any());
+            Assert.NotNull(tag);
+            Assert.True(tag.Items.Any());
         }
 
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task GetGalleryTagImageAsync_IsNotNull()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task GetGalleryTagImageAsync_NotNull()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var image = await endpoint.GetGalleryTagImageAsync("LTUEhhD", "gaming").ConfigureAwait(false);
 
-            Assert.IsNotNull(image);
+            Assert.NotNull(image);
         }
     }
 }

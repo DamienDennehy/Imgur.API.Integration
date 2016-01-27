@@ -1,25 +1,24 @@
 ﻿using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointImageTests
 {
-    [TestClass]
     public class ImgurClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task GetGalleryImageAsync_AreEqual()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task GetGalleryImageAsync_Equal()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var image = await endpoint.GetGalleryImageAsync("BJRWQw5").ConfigureAwait(false);
 
-            Assert.IsNotNull(image);
+            Assert.NotNull(image);
         }
     }
 }

@@ -2,61 +2,60 @@
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
 {
-    [TestClass]
     public class ImgurClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task GetGalleryItemCommentAsync_IsNotNull()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task GetGalleryItemCommentAsync_NotNull()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var comment = await endpoint.GetGalleryItemCommentAsync(542787274, "9cYFV").ConfigureAwait(false);
 
-            Assert.IsNotNull(comment);
+            Assert.NotNull(comment);
         }
 
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task GetGalleryItemCommentCountAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task GetGalleryItemCommentCountAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var commentCount = await endpoint.GetGalleryItemCommentCountAsync("9cYFV").ConfigureAwait(false);
 
-            Assert.IsTrue(commentCount > 10);
+            Assert.True(commentCount > 10);
         }
 
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task GetGalleryItemCommentIdsAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task GetGalleryItemCommentIdsAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var commentIds = await endpoint.GetGalleryItemCommentIdsAsync("9cYFV").ConfigureAwait(false);
 
-            Assert.IsTrue(commentIds.Count() > 10);
+            Assert.True(commentIds.Count() > 10);
         }
 
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task GetGalleryItemCommentsAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task GetGalleryItemCommentsAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var comments = await endpoint.GetGalleryItemCommentsAsync("9cYFV").ConfigureAwait(false);
 
-            Assert.IsTrue(comments.Count() > 10);
+            Assert.True(comments.Count() > 10);
         }
     }
 }

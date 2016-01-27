@@ -3,63 +3,62 @@ using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Imgur.API.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
 {
-    [TestClass]
     public class ImgurClientTests : TestBase
     {
-        public async Task DeleteImageAsync_WithImage_IsTrue(IImage actualImage)
+        public async Task DeleteImageAsync_WithImage_True(IImage actualImage)
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new ImageEndpoint(client);
 
             var expected = await endpoint.DeleteImageAsync(actualImage.DeleteHash).ConfigureAwait(false);
 
-            Assert.IsTrue(expected);
+            Assert.True(expected);
         }
 
-        public async Task GetImageAsync_WithImage_AreEqual(IImage actualImage)
+        public async Task GetImageAsync_WithImage_Equal(IImage actualImage)
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new ImageEndpoint(client);
 
             var expectedImage = await endpoint.GetImageAsync(actualImage.Id).ConfigureAwait(false);
 
-            Assert.AreEqual(actualImage.Id, expectedImage.Id);
-            Assert.AreEqual(actualImage.Title, expectedImage.Title);
-            Assert.AreEqual(actualImage.Description, expectedImage.Description);
-            Assert.AreEqual(actualImage.DateTime, expectedImage.DateTime);
-            Assert.AreEqual(actualImage.Type, expectedImage.Type);
-            Assert.AreEqual(actualImage.Animated, expectedImage.Animated);
-            Assert.AreEqual(actualImage.Width, expectedImage.Width);
-            Assert.AreEqual(actualImage.Height, expectedImage.Height);
-            Assert.AreEqual(actualImage.Size, expectedImage.Size);
-            Assert.AreEqual(actualImage.Link, expectedImage.Link);
-            Assert.AreEqual(actualImage.Gifv, expectedImage.Gifv);
-            Assert.AreEqual(actualImage.Mp4, expectedImage.Mp4);
-            Assert.AreEqual(actualImage.Webm, expectedImage.Webm);
-            Assert.AreEqual(actualImage.Looping, expectedImage.Looping);
-            Assert.AreEqual(actualImage.Favorite, expectedImage.Favorite);
-            Assert.AreEqual(actualImage.Nsfw, expectedImage.Nsfw);
+            Assert.Equal(actualImage.Id, expectedImage.Id);
+            Assert.Equal(actualImage.Title, expectedImage.Title);
+            Assert.Equal(actualImage.Description, expectedImage.Description);
+            Assert.Equal(actualImage.DateTime, expectedImage.DateTime);
+            Assert.Equal(actualImage.Type, expectedImage.Type);
+            Assert.Equal(actualImage.Animated, expectedImage.Animated);
+            Assert.Equal(actualImage.Width, expectedImage.Width);
+            Assert.Equal(actualImage.Height, expectedImage.Height);
+            Assert.Equal(actualImage.Size, expectedImage.Size);
+            Assert.Equal(actualImage.Link, expectedImage.Link);
+            Assert.Equal(actualImage.Gifv, expectedImage.Gifv);
+            Assert.Equal(actualImage.Mp4, expectedImage.Mp4);
+            Assert.Equal(actualImage.Webm, expectedImage.Webm);
+            Assert.Equal(actualImage.Looping, expectedImage.Looping);
+            Assert.Equal(actualImage.Favorite, expectedImage.Favorite);
+            Assert.Equal(actualImage.Nsfw, expectedImage.Nsfw);
         }
 
-        public async Task UpdateImageAsync_WithImage_AreEqual(IImage actualImage)
+        public async Task UpdateImageAsync_WithImage_Equal(IImage actualImage)
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new ImageEndpoint(client);
 
             var expected = await endpoint.UpdateImageAsync(actualImage.DeleteHash, "Ti", "De").ConfigureAwait(false);
 
-            Assert.IsTrue(expected);
+            Assert.True(expected);
         }
 
-        [TestMethod]
-        [TestCategory("ImageEndpoint")]
-        public async Task UploadImageBinaryAsync_WithImage_AreEqual()
+        [Fact]
+        [Trait("Category", "ImageEndpoint")]
+        public async Task UploadImageBinaryAsync_WithImage_Equal()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new ImageEndpoint(client);
@@ -70,18 +69,18 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
                     endpoint.UploadImageBinaryAsync(file, null, "binary test title!", "binary test desc!")
                         .ConfigureAwait(false);
 
-            Assert.IsFalse(string.IsNullOrEmpty(image.Id));
-            Assert.AreEqual("binary test title!", image.Title);
-            Assert.AreEqual("binary test desc!", image.Description);
+            Assert.False(string.IsNullOrEmpty(image.Id));
+            Assert.Equal("binary test title!", image.Title);
+            Assert.Equal("binary test desc!", image.Description);
 
-            await GetImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
-            await UpdateImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
-            await DeleteImageAsync_WithImage_IsTrue(image).ConfigureAwait(false);
+            await GetImageAsync_WithImage_Equal(image).ConfigureAwait(false);
+            await UpdateImageAsync_WithImage_Equal(image).ConfigureAwait(false);
+            await DeleteImageAsync_WithImage_True(image).ConfigureAwait(false);
         }
 
-        [TestMethod]
-        [TestCategory("ImageEndpoint")]
-        public async Task UploadImageStreamAsync_WithImage_AreEqual()
+        [Fact]
+        [Trait("Category", "ImageEndpoint")]
+        public async Task UploadImageStreamAsync_WithImage_Equal()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new ImageEndpoint(client);
@@ -95,18 +94,18 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
                             .ConfigureAwait(true);
             }
 
-            Assert.IsFalse(string.IsNullOrEmpty(image.Id));
-            Assert.AreEqual("stream test title!", image.Title);
-            Assert.AreEqual("stream test desc!", image.Description);
+            Assert.False(string.IsNullOrEmpty(image.Id));
+            Assert.Equal("stream test title!", image.Title);
+            Assert.Equal("stream test desc!", image.Description);
 
-            await GetImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
-            await UpdateImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
-            await DeleteImageAsync_WithImage_IsTrue(image).ConfigureAwait(false);
+            await GetImageAsync_WithImage_Equal(image).ConfigureAwait(false);
+            await UpdateImageAsync_WithImage_Equal(image).ConfigureAwait(false);
+            await DeleteImageAsync_WithImage_True(image).ConfigureAwait(false);
         }
 
-        [TestMethod]
-        [TestCategory("ImageEndpoint")]
-        public async Task UploadImageUrlAsync_WithImage_AreEqual()
+        [Fact]
+        [Trait("Category", "ImageEndpoint")]
+        public async Task UploadImageUrlAsync_WithImage_Equal()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new ImageEndpoint(client);
@@ -116,13 +115,13 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
                     endpoint.UploadImageUrlAsync("http://i.imgur.com/Eg71tvs.gif", null, "url test title!",
                         "url test desc!").ConfigureAwait(false);
 
-            Assert.IsFalse(string.IsNullOrEmpty(image.Id));
-            Assert.AreEqual("url test title!", image.Title);
-            Assert.AreEqual("url test desc!", image.Description);
+            Assert.False(string.IsNullOrEmpty(image.Id));
+            Assert.Equal("url test title!", image.Title);
+            Assert.Equal("url test desc!", image.Description);
 
-            await GetImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
-            await UpdateImageAsync_WithImage_AreEqual(image).ConfigureAwait(false);
-            await DeleteImageAsync_WithImage_IsTrue(image).ConfigureAwait(false);
+            await GetImageAsync_WithImage_Equal(image).ConfigureAwait(false);
+            await UpdateImageAsync_WithImage_Equal(image).ConfigureAwait(false);
+            await DeleteImageAsync_WithImage_True(image).ConfigureAwait(false);
         }
     }
 }

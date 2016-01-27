@@ -1,38 +1,35 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-// ReSharper disable ExceptionNotDocumented
+﻿// ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
 {
-    [TestClass]
     public class MashapeClientTestWithOAuth2Tests : TestBase
     {
-        //[TestMethod]
-        //[TestCategory("GalleryEndpoint")]
-        //public async Task PublishToGalleryAsync_IsTrue()
+        //[Fact]
+        //[Trait("Category", "GalleryEndpoint")]
+        //public async Task PublishToGalleryAsync_True()
         //{
         //    var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
         //    var endpoint = new GalleryEndpoint(client);
 
         //    var published = await endpoint.PublishToGalleryAsync("Rp47ldM", "API Publish Test", "2", true, false).ConfigureAwait(false);
 
-        //    Assert.IsTrue(published);
+        //    Assert.True(published);
 
         //    var removed = await endpoint.RemoveFromGalleryAsync("Rp47ldM").ConfigureAwait(false);
 
-        //    Assert.IsTrue(removed);
+        //    Assert.True(removed);
         //}
 
-        //[TestMethod]
-        //[TestCategory("GalleryEndpoint")]
-        //public async Task ReportGalleryItemAsync_IsTrue()
+        //[Fact]
+        //[Trait("Category", "GalleryEndpoint")]
+        //public async Task ReportGalleryItemAsync_True()
         //{
         //    var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
         //    var endpoint = new GalleryEndpoint(client);
 
         //    var reported = await endpoint.ReportGalleryItemAsync("olQIw", ReportReason.Pornography).ConfigureAwait(false);
 
-        //    Assert.IsTrue(reported);
+        //    Assert.True(reported);
         //}
     }
 }

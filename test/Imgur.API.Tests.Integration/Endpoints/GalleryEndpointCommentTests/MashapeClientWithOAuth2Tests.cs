@@ -1,18 +1,17 @@
 ﻿using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
 {
-    [TestClass]
     public class MashapeClientWithOAuth2Tests : TestBase
     {
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task CreateGalleryItemCommentAsync_IsNotNull()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task CreateGalleryItemCommentAsync_NotNull()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new GalleryEndpoint(client);
@@ -22,12 +21,12 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
                     endpoint.CreateGalleryItemCommentAsync("Create Comment from Gallery", "BJRWQw5")
                         .ConfigureAwait(false);
 
-            Assert.IsNotNull(comment);
+            Assert.NotNull(comment);
         }
 
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task CreateGalleryItemCommentReplyAsync_IsNotNull()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task CreateGalleryItemCommentReplyAsync_NotNull()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new GalleryEndpoint(client);
@@ -37,7 +36,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
                     endpoint.CreateGalleryItemCommentReplyAsync("Reply Comment from Gallery", "BJRWQw5", "550061341")
                         .ConfigureAwait(false);
 
-            Assert.IsNotNull(comment);
+            Assert.NotNull(comment);
         }
     }
 }

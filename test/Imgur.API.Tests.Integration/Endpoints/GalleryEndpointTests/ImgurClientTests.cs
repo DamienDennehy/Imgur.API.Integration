@@ -2,61 +2,60 @@
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
 {
-    [TestClass]
     public class ImgurClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task GetGalleryAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task GetGalleryAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.GetGalleryAsync().ConfigureAwait(false);
 
-            Assert.IsTrue(gallery.Any());
+            Assert.True(gallery.Any());
         }
 
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task GetRandomGalleryAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task GetRandomGalleryAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.GetRandomGalleryAsync().ConfigureAwait(false);
 
-            Assert.IsTrue(gallery.Any());
+            Assert.True(gallery.Any());
         }
 
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task SearchGalleryAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task SearchGalleryAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.SearchGalleryAsync("star wars").ConfigureAwait(false);
 
-            Assert.IsTrue(gallery.Any());
+            Assert.True(gallery.Any());
         }
 
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task SearchGalleryAdvancedAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task SearchGalleryAdvancedAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.SearchGalleryAdvancedAsync("cats", qNot: "dogs").ConfigureAwait(false);
 
-            Assert.IsTrue(gallery.Any());
+            Assert.True(gallery.Any());
         }
     }
 }

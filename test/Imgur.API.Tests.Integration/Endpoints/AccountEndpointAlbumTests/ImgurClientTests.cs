@@ -2,29 +2,28 @@
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
 {
-    [TestClass]
     public class ImgurClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("AccountEndpointAlbum")]
-        public async Task GetAlbumAsync_IsNotNull()
+        [Fact]
+        [Trait("Category", "AccountEndpointAlbum")]
+        public async Task GetAlbumAsync_NotNull()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AccountEndpoint(client);
 
             var album = await endpoint.GetAlbumAsync("SbU9Y", "sarah").ConfigureAwait(false);
 
-            Assert.IsNotNull(album);
+            Assert.NotNull(album);
         }
 
-        [TestMethod]
-        [TestCategory("AccountEndpointAlbum")]
+        [Fact]
+        [Trait("Category", "AccountEndpointAlbum")]
         public async Task GetAlbumCountAsync_GreaterThan100()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
@@ -32,31 +31,31 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
 
             var albums = await endpoint.GetAlbumCountAsync("sarah").ConfigureAwait(false);
 
-            Assert.IsTrue(albums > 100);
+            Assert.True(albums > 100);
         }
 
-        [TestMethod]
-        [TestCategory("AccountEndpointAlbum")]
-        public async Task GetAlbumIdsAsync_AreEqual()
+        [Fact]
+        [Trait("Category", "AccountEndpointAlbum")]
+        public async Task GetAlbumIdsAsync_Equal()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AccountEndpoint(client);
 
             var albums = await endpoint.GetAlbumIdsAsync("sarah").ConfigureAwait(false);
 
-            Assert.AreEqual(50, albums.Count());
+            Assert.Equal(50, albums.Count());
         }
 
-        [TestMethod]
-        [TestCategory("AccountEndpointAlbum")]
-        public async Task GetAlbumsAsync_AreEqual()
+        [Fact]
+        [Trait("Category", "AccountEndpointAlbum")]
+        public async Task GetAlbumsAsync_Equal()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new AccountEndpoint(client);
 
             var albums = await endpoint.GetAlbumsAsync("sarah").ConfigureAwait(false);
 
-            Assert.AreEqual(50, albums.Count());
+            Assert.Equal(50, albums.Count());
         }
     }
 }

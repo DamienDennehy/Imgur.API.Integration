@@ -1,38 +1,41 @@
 ﻿using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.OAuth2EndpointTests
 {
-    [TestClass]
     public class ImgurClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("OAuth2Endpoint")]
-        [ExpectedException(typeof (ImgurException))]
+        [Fact]
+        [Trait("Category", "OAuth2Endpoint")]
         public async Task GetTokenByCodeAsync_SetCodeInvalid_ThrowsImgurException()
         {
             var authentication = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new OAuth2Endpoint(authentication);
-            await endpoint.GetTokenByCodeAsync("abc").ConfigureAwait(false);
+
+            var exception =
+                await Record.ExceptionAsync(async () => await endpoint.GetTokenByCodeAsync("abc").ConfigureAwait(false))
+                    .ConfigureAwait(false);
+            Assert.NotNull(exception);
+            Assert.IsType<ImgurException>(exception);
         }
 
-        [TestMethod]
-        [TestCategory("OAuth2Endpoint")]
-        public async Task GetTokenByRefreshTokenAsync_SetToken_IsNotNull()
+        [Fact]
+        [Trait("Category", "OAuth2Endpoint")]
+        public async Task GetTokenByRefreshTokenAsync_SetToken_NotNull()
         {
             var authentication = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new OAuth2Endpoint(authentication);
             var token = await endpoint.GetTokenByRefreshTokenAsync(Settings.RefreshToken).ConfigureAwait(false);
 
-            Assert.IsNotNull(token);
-            Assert.IsFalse(string.IsNullOrWhiteSpace(token.AccessToken));
-            Assert.IsFalse(string.IsNullOrWhiteSpace(token.RefreshToken));
-            Assert.IsFalse(string.IsNullOrWhiteSpace(token.AccountId));
-            Assert.IsFalse(string.IsNullOrWhiteSpace(token.TokenType));
+            Assert.NotNull(token);
+            Assert.False(string.IsNullOrWhiteSpace(token.AccessToken));
+            Assert.False(string.IsNullOrWhiteSpace(token.RefreshToken));
+            Assert.False(string.IsNullOrWhiteSpace(token.AccountId));
+            Assert.False(string.IsNullOrWhiteSpace(token.TokenType));
         }
     }
 }

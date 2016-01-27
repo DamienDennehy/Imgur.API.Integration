@@ -1,29 +1,28 @@
 ﻿using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.RateLimitEndpointTests
 {
-    [TestClass]
     public class ImgurClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("RateLimitEndpoint")]
+        [Fact]
+        [Trait("Category", "RateLimitEndpoint")]
         public async Task RateLimit_GetRateLimitWithImgurClient_IsValidRateLimit()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new RateLimitEndpoint(client);
             var limit = await endpoint.GetRateLimitAsync().ConfigureAwait(false);
-            Assert.IsNotNull(limit);
-            Assert.IsTrue(limit.ClientLimit > 0);
-            Assert.IsTrue(limit.ClientRemaining > 0);
+            Assert.NotNull(limit);
+            Assert.True(limit.ClientLimit > 0);
+            Assert.True(limit.ClientRemaining > 0);
         }
 
-        [TestMethod]
-        [TestCategory("RateLimitEndpoint")]
+        [Fact]
+        [Trait("Category", "RateLimitEndpoint")]
         public async Task RateLimit_GetRateLimitWithImgurClientAndOAuth2Authentication_IsValidRateLimit()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
@@ -31,9 +30,9 @@ namespace Imgur.API.Tests.Integration.Endpoints.RateLimitEndpointTests
             var endpoint = new RateLimitEndpoint(client);
             var limit = await endpoint.GetRateLimitAsync().ConfigureAwait(false);
 
-            Assert.IsNotNull(limit);
-            Assert.IsTrue(limit.ClientLimit > 0);
-            Assert.IsTrue(limit.ClientRemaining > 0);
+            Assert.NotNull(limit);
+            Assert.True(limit.ClientLimit > 0);
+            Assert.True(limit.ClientRemaining > 0);
         }
     }
 }

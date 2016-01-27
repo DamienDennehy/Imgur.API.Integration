@@ -2,17 +2,16 @@
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.MemeGenEndpointTests
 {
-    [TestClass]
     public class ImgurClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("MemeGenEndpoint")]
+        [Fact]
+        [Trait("Category", "MemeGenEndpoint")]
         public async Task GetDefaultMemesAsync_Any()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
@@ -20,7 +19,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.MemeGenEndpointTests
 
             var memes = await endpoint.GetDefaultMemesAsync().ConfigureAwait(false);
 
-            Assert.IsTrue(memes.Any());
+            Assert.True(memes.Any());
         }
     }
 }

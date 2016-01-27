@@ -2,17 +2,16 @@
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointMemeTests
 {
-    [TestClass]
     public class ImgurClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
         public async Task GetMemesSubGalleryAsync_Any()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
@@ -20,19 +19,19 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointMemeTests
 
             var memes = await endpoint.GetMemesSubGalleryAsync().ConfigureAwait(false);
 
-            Assert.IsTrue(memes.Any());
+            Assert.True(memes.Any());
         }
 
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task GetMemesSubGalleryImageAsync_IsNotNull()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task GetMemesSubGalleryImageAsync_NotNull()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
             var endpoint = new GalleryEndpoint(client);
 
             var meme = await endpoint.GetMemesSubGalleryImageAsync("qjHJPWZ").ConfigureAwait(false);
 
-            Assert.IsNotNull(meme);
+            Assert.NotNull(meme);
         }
     }
 }

@@ -1,25 +1,24 @@
 ﻿using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointAlbumTests
 {
-    [TestClass]
     public class MashapeClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("GalleryEndpoint")]
-        public async Task GetGalleryAlbumAsync_AreEqual()
+        [Fact]
+        [Trait("Category", "GalleryEndpoint")]
+        public async Task GetGalleryAlbumAsync_Equal()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.GetGalleryAlbumAsync("9cYFV").ConfigureAwait(false);
 
-            Assert.IsNotNull(gallery);
+            Assert.NotNull(gallery);
         }
     }
 }

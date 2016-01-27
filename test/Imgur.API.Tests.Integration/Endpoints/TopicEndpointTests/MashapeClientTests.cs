@@ -3,17 +3,16 @@ using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Imgur.API.Enums;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
 {
-    [TestClass]
     public class MashapeClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("TopicEndpoint")]
+        [Fact]
+        [Trait("Category", "TopicEndpoint")]
         public async Task GetDefaultTopicsAsync_Any()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
@@ -21,11 +20,11 @@ namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
 
             var topics = await endpoint.GetDefaultTopicsAsync().ConfigureAwait(false);
 
-            Assert.IsTrue(topics.Any());
+            Assert.True(topics.Any());
         }
 
-        [TestMethod]
-        [TestCategory("TopicEndpoint")]
+        [Fact]
+        [Trait("Category", "TopicEndpoint")]
         public async Task GetGalleryTopicItemsAsync_Any()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
@@ -36,19 +35,19 @@ namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
                     endpoint.GetGalleryTopicItemsAsync("Current Events", CustomGallerySortOrder.Top, TimeWindow.Day)
                         .ConfigureAwait(false);
 
-            Assert.IsTrue(items.Any());
+            Assert.True(items.Any());
         }
 
-        [TestMethod]
-        [TestCategory("TopicEndpoint")]
-        public async Task GetGalleryTopicItemAsync_IsNotNull()
+        [Fact]
+        [Trait("Category", "TopicEndpoint")]
+        public async Task GetGalleryTopicItemAsync_NotNull()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
             var endpoint = new TopicEndpoint(client);
 
             var item = await endpoint.GetGalleryTopicItemAsync("bjeTa", "Current Events").ConfigureAwait(false);
 
-            Assert.IsNotNull(item);
+            Assert.NotNull(item);
         }
     }
 }

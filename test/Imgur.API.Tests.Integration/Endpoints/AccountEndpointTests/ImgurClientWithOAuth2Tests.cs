@@ -3,65 +3,68 @@ using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
 using Imgur.API.Enums;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
 {
-    [TestClass]
     public class ImgurClientWithOAuth2Tests : TestBase
     {
-        [TestMethod]
-        [TestCategory("AccountEndpoint")]
-        public async Task GetAccountAsync_WithDefaultUsername_AreEqual()
+        [Fact]
+        [Trait("Category", "AccountEndpoint")]
+        public async Task GetAccountAsync_WithDefaultUsername_Equal()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var account = await endpoint.GetAccountAsync().ConfigureAwait(false);
 
-            Assert.IsTrue(account.Url.Equals("ImgurAPIDotNet", StringComparison.OrdinalIgnoreCase));
+            Assert.True(account.Url.Equals("ImgurAPIDotNet", StringComparison.OrdinalIgnoreCase));
         }
 
-        [TestMethod]
-        [TestCategory("AccountEndpoint")]
-        public async Task GetAccountAsync_WithUsername_AreEqual()
+        [Fact]
+        [Trait("Category", "AccountEndpoint")]
+        public async Task GetAccountAsync_WithUsername_Equal()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var account = await endpoint.GetAccountAsync("sarah").ConfigureAwait(false);
 
-            Assert.IsTrue("sarah".Equals(account.Url, StringComparison.OrdinalIgnoreCase));
+            Assert.True("sarah".Equals(account.Url, StringComparison.OrdinalIgnoreCase));
         }
 
-        [TestMethod]
-        [TestCategory("AccountEndpoint")]
-        public async Task GetAccountSettingsAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "AccountEndpoint")]
+        public async Task GetAccountSettingsAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var settings = await endpoint.GetAccountSettingsAsync().ConfigureAwait(false);
 
-            Assert.IsFalse(settings.PublicImages);
+            Assert.False(settings.PublicImages);
         }
 
-        [TestMethod]
-        [TestCategory("AccountEndpoint")]
-        [ExpectedException(typeof (ImgurException))]
-        public async Task SendVerificationEmailAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "AccountEndpoint")]
+        public async Task SendVerificationEmailAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            await endpoint.SendVerificationEmailAsync().ConfigureAwait(false);
+            var exception =
+                await
+                    Record.ExceptionAsync(async () => await endpoint.SendVerificationEmailAsync().ConfigureAwait(false))
+                        .ConfigureAwait(false);
+            Assert.NotNull(exception);
+            Assert.IsType<ImgurException>(exception);
         }
 
-        [TestMethod]
-        [TestCategory("AccountEndpoint")]
-        public async Task UpdateAccountSettingsAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "AccountEndpoint")]
+        public async Task UpdateAccountSettingsAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
@@ -71,19 +74,19 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
                     endpoint.UpdateAccountSettingsAsync("ImgurClient_" + DateTimeOffset.UtcNow, false,
                         albumPrivacy: AlbumPrivacy.Hidden).ConfigureAwait(false);
 
-            Assert.IsTrue(updated);
+            Assert.True(updated);
         }
 
-        [TestMethod]
-        [TestCategory("AccountEndpoint")]
-        public async Task VerifyEmailAsync_IsTrue()
+        [Fact]
+        [Trait("Category", "AccountEndpoint")]
+        public async Task VerifyEmailAsync_True()
         {
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var verified = await endpoint.VerifyEmailAsync().ConfigureAwait(false);
 
-            Assert.IsTrue(verified);
+            Assert.True(verified);
         }
     }
 }

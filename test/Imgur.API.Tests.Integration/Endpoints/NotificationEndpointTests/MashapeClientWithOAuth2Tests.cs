@@ -2,54 +2,53 @@
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.NotificationEndpointTests
 {
-    [TestClass]
     public class MashapeClientWithOAuth2Tests : TestBase
     {
-        [TestMethod]
-        [TestCategory("NotificationEndpoint")]
-        public async Task GetNotificationsAsync_AreEqual()
+        [Fact]
+        [Trait("Category", "NotificationEndpoint")]
+        public async Task GetNotificationsAsync_Equal()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new NotificationEndpoint(client);
 
             var notifications = await endpoint.GetNotificationsAsync().ConfigureAwait(false);
 
-            Assert.IsNotNull(notifications);
+            Assert.NotNull(notifications);
         }
 
-        [TestMethod]
-        [TestCategory("NotificationEndpoint")]
-        public async Task GetNotificationAsync_AreEqual()
+        [Fact]
+        [Trait("Category", "NotificationEndpoint")]
+        public async Task GetNotificationAsync_Equal()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new NotificationEndpoint(client);
 
             var notification = await endpoint.GetNotificationAsync("322888961").ConfigureAwait(false);
 
-            Assert.IsNotNull(notification);
+            Assert.NotNull(notification);
         }
 
-        [TestMethod]
-        [TestCategory("NotificationEndpoint")]
-        public async Task MarkNotificationViewedAsync_IsFalse()
+        [Fact]
+        [Trait("Category", "NotificationEndpoint")]
+        public async Task MarkNotificationViewedAsync_False()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new NotificationEndpoint(client);
 
             var marked = await endpoint.MarkNotificationViewedAsync("322888961").ConfigureAwait(false);
 
-            Assert.IsFalse(marked);
+            Assert.False(marked);
         }
 
-        [TestMethod]
-        [TestCategory("NotificationEndpoint")]
-        public async Task MarkNotificationsViewedAsync_IsFalse()
+        [Fact]
+        [Trait("Category", "NotificationEndpoint")]
+        public async Task MarkNotificationsViewedAsync_False()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
             var endpoint = new NotificationEndpoint(client);
@@ -59,7 +58,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.NotificationEndpointTests
                     endpoint.MarkNotificationsViewedAsync(new List<string> {"322868553", "322866705"})
                         .ConfigureAwait(false);
 
-            Assert.IsFalse(marked);
+            Assert.False(marked);
         }
     }
 }

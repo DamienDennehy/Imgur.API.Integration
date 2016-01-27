@@ -2,17 +2,16 @@
 using System.Threading.Tasks;
 using Imgur.API.Authentication.Impl;
 using Imgur.API.Endpoints.Impl;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 // ReSharper disable ExceptionNotDocumented
 
 namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
 {
-    [TestClass]
     public class MashapeClientTests : TestBase
     {
-        [TestMethod]
-        [TestCategory("AccountEndpointGallery")]
+        [Fact]
+        [Trait("Category", "AccountEndpointGallery")]
         public async Task GetAccountGalleryFavoritesAsync_Any()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
@@ -20,11 +19,11 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
 
             var favourites = await endpoint.GetAccountGalleryFavoritesAsync("sarah").ConfigureAwait(false);
 
-            Assert.IsTrue(favourites.Any());
+            Assert.True(favourites.Any());
         }
 
-        [TestMethod]
-        [TestCategory("AccountEndpointGallery")]
+        [Fact]
+        [Trait("Category", "AccountEndpointGallery")]
         public async Task GetAccountSubmissionsAsync_Any()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
@@ -32,11 +31,11 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
 
             var submissions = await endpoint.GetAccountSubmissionsAsync("sarah").ConfigureAwait(false);
 
-            Assert.IsTrue(submissions.Any());
+            Assert.True(submissions.Any());
         }
 
-        [TestMethod]
-        [TestCategory("AccountEndpointGallery")]
+        [Fact]
+        [Trait("Category", "AccountEndpointGallery")]
         public async Task GetGalleryProfileAsync_AnyTrophies()
         {
             var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
@@ -44,7 +43,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointGalleryTests
 
             var profile = await endpoint.GetGalleryProfileAsync("sarah").ConfigureAwait(false);
 
-            Assert.IsTrue(profile.Trophies.Any());
+            Assert.True(profile.Trophies.Any());
         }
     }
 }
