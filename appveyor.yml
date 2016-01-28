@@ -1,10 +1,19 @@
 version: 1.0.0-build{build}
 install:
-- cmd: nuget sources add -Name MyGet-CI -Source http://myget.org/f/damiendennehy/
-- nuget restore
+- ps: >-
+    dnvm install 1.0.0-rc1-update1
+
+    dnvm use 1.0.0-rc1-update1
+
+    nuget sources add -Name Local-CI -Source C:\Users\appveyor\.dnx\packages
+
+    nuget sources add -Name MyGet-CI -Source http://myget.org/f/damiendennehy/
 cache:
 - C:\Users\appveyor\.dnx\runtimes
 - C:\Users\appveyor\.dnx\packages
+before_build:
+- ps: >-
+    dnu restore
 build:
   verbosity: minimal
 test:
