@@ -2,5 +2,6 @@
   "ClientId": "",
   "ClientSecret": "",
   "MashapeKey": "",
+  "AccessToken": "",
   "RefreshToken": ""
 }
