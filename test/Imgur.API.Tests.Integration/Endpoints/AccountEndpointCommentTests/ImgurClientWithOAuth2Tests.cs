@@ -17,8 +17,6 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var deleted = await endpoint.DeleteCommentAsync(487153732).ConfigureAwait(false);
-
             var exception =
                 await
                     Record.ExceptionAsync(async () => await endpoint.DeleteCommentAsync(487153732).ConfigureAwait(false))

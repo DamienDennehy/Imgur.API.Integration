@@ -1,7 +1,6 @@
 ﻿using System.IO;
-using Imgur.API.Authentication.Impl;
-using Imgur.API.Endpoints.Impl;
 using Imgur.API.Models;
+using Imgur.API.Models.Impl;
 using Newtonsoft.Json;
 
 namespace Imgur.API.Tests.Integration
@@ -24,9 +23,8 @@ namespace Imgur.API.Tests.Integration
             if (_token != null)
                 return _token;
 
-            var authentication = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
-            var endpoint = new OAuth2Endpoint(authentication);
-            _token = endpoint.GetTokenByRefreshTokenAsync(Settings.RefreshToken).Result;
+            _token = new OAuth2Token(Settings.AccessToken, Settings.RefreshToken, "bearer", "24562464", "imgurapidotnet",
+                2629746);
             return _token;
         }
     }

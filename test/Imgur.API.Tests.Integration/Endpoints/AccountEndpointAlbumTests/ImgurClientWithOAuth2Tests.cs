@@ -17,8 +17,6 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
             var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
-            var deleted = await endpoint.DeleteAlbumAsync("lzpoZ7a5IPrxvVe").ConfigureAwait(false);
-
             var exception =
                 await
                     Record.ExceptionAsync(

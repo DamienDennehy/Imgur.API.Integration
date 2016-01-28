@@ -23,19 +23,19 @@ namespace Imgur.API.Tests.Integration.Endpoints.OAuth2EndpointTests
             Assert.IsType<ImgurException>(exception);
         }
 
-        [Fact]
-        [Trait("Category", "OAuth2Endpoint")]
-        public async Task GetTokenByRefreshTokenAsync_SetToken_NotNull()
-        {
-            var authentication = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
-            var endpoint = new OAuth2Endpoint(authentication);
-            var token = await endpoint.GetTokenByRefreshTokenAsync(Settings.RefreshToken).ConfigureAwait(false);
+        //[Fact]
+        //[Trait("Category", "OAuth2Endpoint")]
+        //public async Task GetTokenByRefreshTokenAsync_SetToken_NotNull()
+        //{
+        //    var authentication = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+        //    var endpoint = new OAuth2Endpoint(authentication);
+        //    var token = await endpoint.GetTokenByRefreshTokenAsync(Settings.RefreshToken).ConfigureAwait(false);
 
-            Assert.NotNull(token);
-            Assert.False(string.IsNullOrWhiteSpace(token.AccessToken));
-            Assert.False(string.IsNullOrWhiteSpace(token.RefreshToken));
-            Assert.False(string.IsNullOrWhiteSpace(token.AccountId));
-            Assert.False(string.IsNullOrWhiteSpace(token.TokenType));
-        }
+        //    Assert.NotNull(token);
+        //    Assert.False(string.IsNullOrWhiteSpace(token.AccessToken));
+        //    Assert.False(string.IsNullOrWhiteSpace(token.RefreshToken));
+        //    Assert.False(string.IsNullOrWhiteSpace(token.AccountId));
+        //    Assert.False(string.IsNullOrWhiteSpace(token.TokenType));
+        //}
     }
 }
