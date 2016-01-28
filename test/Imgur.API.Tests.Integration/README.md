@@ -11,6 +11,8 @@ These variables contain the Imgur and Mashape authentication settings.
 
 **MashapeKey**: The Mashape Key for commercial applications.
 
+**AccessToken**: An OAuth2 access token for testing Imgur API methods that require user authentication.
+
 **RefreshToken**: An OAuth2 refresh token for testing Imgur API methods that require user authentication.
 
 ## Preventing config.json commits
