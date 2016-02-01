@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointVoteTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task VoteGalleryItemAsync_True()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new GalleryEndpoint(client);
 
             var voted = await endpoint.VoteGalleryItemAsync("7EhqwbF", VoteOption.Down).ConfigureAwait(false);

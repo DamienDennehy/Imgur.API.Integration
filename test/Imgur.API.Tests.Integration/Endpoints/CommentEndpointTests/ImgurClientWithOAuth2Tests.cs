@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         [Trait("Category", "CommentEndpoint")]
         public async Task GetCommentAsync_Equal()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
             var comment = await endpoint.GetCommentAsync(540468501).ConfigureAwait(false);
@@ -28,7 +28,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         [Trait("Category", "CommentEndpoint")]
         public async Task GetRepliesAsync_AnyChildren()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
             var comment = await endpoint.GetRepliesAsync(540468501).ConfigureAwait(false);
@@ -41,7 +41,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         [Trait("Category", "CommentEndpoint")]
         public async Task CreateCommentAsync_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
             var comment = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5").ConfigureAwait(false);
@@ -53,7 +53,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         [Trait("Category", "CommentEndpoint")]
         public async Task CreateCommentAsync_WithParentId_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
             var comment =
@@ -68,7 +68,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         [Trait("Category", "CommentEndpoint")]
         public async Task CreateReplyAsync_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
             var comment = await endpoint.CreateReplyAsync("Create Reply", "BJRWQw5", "540767605").ConfigureAwait(false);
@@ -80,7 +80,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         [Trait("Category", "CommentEndpoint")]
         public async Task DeleteCommentAsync_True()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
             var commentId = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5").ConfigureAwait(false);
@@ -93,7 +93,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CommentEndpointTests
         [Trait("Category", "CommentEndpoint")]
         public async Task VoteCommentAsync_Equal()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CommentEndpoint(client);
 
             var commentId = await endpoint.CreateCommentAsync("Create Comment", "BJRWQw5").ConfigureAwait(false);

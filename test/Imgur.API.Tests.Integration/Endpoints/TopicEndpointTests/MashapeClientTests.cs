@@ -15,7 +15,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
         [Trait("Category", "TopicEndpoint")]
         public async Task GetDefaultTopicsAsync_Any()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new TopicEndpoint(client);
 
             var topics = await endpoint.GetDefaultTopicsAsync().ConfigureAwait(false);
@@ -27,7 +27,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
         [Trait("Category", "TopicEndpoint")]
         public async Task GetGalleryTopicItemsAsync_Any()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new TopicEndpoint(client);
 
             var items =
@@ -42,7 +42,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.TopicEndpointTests
         [Trait("Category", "TopicEndpoint")]
         public async Task GetGalleryTopicItemAsync_NotNull()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new TopicEndpoint(client);
 
             var item = await endpoint.GetGalleryTopicItemAsync("bjeTa", "Current Events").ConfigureAwait(false);

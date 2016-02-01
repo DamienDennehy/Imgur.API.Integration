@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTagTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task VoteGalleryTagAsync_True()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new GalleryEndpoint(client);
 
             var voted = await endpoint.VoteGalleryTagAsync("LTUEhhD", "gaming", VoteOption.Up).ConfigureAwait(false);

@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetGalleryAsync_True()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.GetGalleryAsync().ConfigureAwait(false);
@@ -26,7 +26,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetRandomGalleryAsync_True()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.GetRandomGalleryAsync().ConfigureAwait(false);
@@ -38,7 +38,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task SearchGalleryAsync_True()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.SearchGalleryAsync("star wars").ConfigureAwait(false);
@@ -50,7 +50,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task SearchGalleryAdvancedAsync_True()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.SearchGalleryAdvancedAsync("cats", qNot: "dogs").ConfigureAwait(false);

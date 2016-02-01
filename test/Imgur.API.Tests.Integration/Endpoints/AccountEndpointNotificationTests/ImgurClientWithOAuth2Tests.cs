@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointNotificationTests
         [Trait("Category", "AccountEndpointNotification")]
         public async Task GetNotificationsAsync_AnyComments()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var notifications = await endpoint.GetNotificationsAsync(false).ConfigureAwait(false);

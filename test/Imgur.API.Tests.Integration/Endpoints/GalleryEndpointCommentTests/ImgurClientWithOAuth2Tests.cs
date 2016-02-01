@@ -13,7 +13,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task CreateGalleryItemCommentAsync_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new GalleryEndpoint(client);
 
             var comment =
@@ -28,7 +28,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task CreateGalleryItemCommentReplyAsync_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new GalleryEndpoint(client);
 
             var comment =

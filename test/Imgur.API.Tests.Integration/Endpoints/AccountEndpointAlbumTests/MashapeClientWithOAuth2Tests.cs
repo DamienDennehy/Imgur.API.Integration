@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         [Trait("Category", "AccountEndpointAlbum")]
         public async Task DeleteAlbumAsync_ThrowsImgurException()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var exception =
@@ -30,7 +30,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         [Trait("Category", "AccountEndpointAlbum")]
         public async Task GetAlbumAsync_WithValidReponse_Equal()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var album = await endpoint.GetAlbumAsync("cuta6").ConfigureAwait(false);
@@ -42,7 +42,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         [Trait("Category", "AccountEndpointAlbum")]
         public async Task GetAlbumCountAsync_WithValidReponse_Equal()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var albums = await endpoint.GetAlbumCountAsync().ConfigureAwait(false);
@@ -54,7 +54,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         [Trait("Category", "AccountEndpointAlbum")]
         public async Task GetAlbumIdsAsync_Any()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var albums = await endpoint.GetAlbumIdsAsync().ConfigureAwait(false);
@@ -66,7 +66,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointAlbumTests
         [Trait("Category", "AccountEndpointAlbum")]
         public async Task GetAlbumsAsync_True()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var albums = await endpoint.GetAlbumsAsync().ConfigureAwait(false);

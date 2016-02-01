@@ -13,7 +13,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
     {
         public async Task DeleteImageAsync_WithImage_True(IImage actualImage)
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new ImageEndpoint(client);
 
             var expected = await endpoint.DeleteImageAsync(actualImage.Id).ConfigureAwait(false);
@@ -23,7 +23,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
 
         public async Task FavoriteImageAsync_WithNotFavoritedImage_True(IImage actualImage)
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new ImageEndpoint(client);
 
             var expected = await endpoint.FavoriteImageAsync(actualImage.Id).ConfigureAwait(false);
@@ -33,7 +33,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
 
         public async Task GetImageAsync_WithImage_Equal(IImage actualImage)
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new ImageEndpoint(client);
 
             var expectedImage = await endpoint.GetImageAsync(actualImage.Id).ConfigureAwait(false);
@@ -58,7 +58,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
 
         public async Task UnfavoriteImageAsync_WithFavoritedImage_False(IImage actualImage)
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new ImageEndpoint(client);
 
             var expected = await endpoint.FavoriteImageAsync(actualImage.Id).ConfigureAwait(false);
@@ -68,7 +68,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
 
         public async Task UpdateImageAsync_WithImage_Equal(IImage actualImage)
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new ImageEndpoint(client);
 
             var expected = await endpoint.UpdateImageAsync(actualImage.Id, "Ti", "De").ConfigureAwait(false);
@@ -80,7 +80,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
         [Trait("Category", "ImageEndpoint")]
         public async Task UploadImageBinaryAsync_WithImage_Equal()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new ImageEndpoint(client);
 
             var file = File.ReadAllBytes("banana.gif");
@@ -104,7 +104,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
         [Trait("Category", "ImageEndpoint")]
         public async Task UploadImageStreamAsync_WithImage_Equal()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new ImageEndpoint(client);
             IImage image;
 
@@ -131,7 +131,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
         [Trait("Category", "ImageEndpoint")]
         public async Task UploadImageUrlAsync_WithImage_Equal()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new ImageEndpoint(client);
 
             var image =

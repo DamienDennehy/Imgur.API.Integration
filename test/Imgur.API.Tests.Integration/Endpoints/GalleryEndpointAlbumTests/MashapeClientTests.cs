@@ -13,7 +13,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointAlbumTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetGalleryAlbumAsync_Equal()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
             var gallery = await endpoint.GetGalleryAlbumAsync("9cYFV").ConfigureAwait(false);

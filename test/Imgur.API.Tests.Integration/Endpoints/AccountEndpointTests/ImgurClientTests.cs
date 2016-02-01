@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
         [Trait("Category", "AccountEndpoint")]
         public async Task GetAccountAsync_WithUsername_Equal()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
+            var client = new ImgurClient(Settings.ClientId);
             var endpoint = new AccountEndpoint(client);
 
             var account = await endpoint.GetAccountAsync("sarah").ConfigureAwait(false);

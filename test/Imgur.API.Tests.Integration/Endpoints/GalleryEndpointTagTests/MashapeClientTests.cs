@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTagTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetGalleryItemTagsAsync_Any()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
             var tags = await endpoint.GetGalleryItemTagsAsync("7EhqwbF").ConfigureAwait(false);
@@ -27,7 +27,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTagTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetGalleryTagAsync_NotNull()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
             var tag = await endpoint.GetGalleryTagAsync("gaming").ConfigureAwait(false);
@@ -40,7 +40,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTagTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetGalleryTagImageAsync_NotNull()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
             var image = await endpoint.GetGalleryTagImageAsync("LTUEhhD", "gaming").ConfigureAwait(false);

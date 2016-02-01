@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.MemeGenEndpointTests
         [Trait("Category", "MemeGenEndpoint")]
         public async Task GetDefaultMemesAsync_Any()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new MemeGenEndpoint(client);
 
             var memes = await endpoint.GetDefaultMemesAsync().ConfigureAwait(false);

@@ -13,7 +13,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointImageTests
         [Trait("Category", "AccountEndpointImage")]
         public async Task GetImageAsync_NotNull()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new AccountEndpoint(client);
 
             var image = await endpoint.GetImageAsync("ra06GZN", "sarah").ConfigureAwait(false);

@@ -27,7 +27,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.OAuth2EndpointTests
         //[Trait("Category", "OAuth2Endpoint")]
         //public async Task GetTokenByRefreshTokenAsync_SetToken_NotNull()
         //{
-        //    var authentication = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+        //    var authentication = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
         //    var endpoint = new OAuth2Endpoint(authentication);
         //    var token = await endpoint.GetTokenByRefreshTokenAsync(Settings.RefreshToken).ConfigureAwait(false);
 

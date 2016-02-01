@@ -18,7 +18,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task AddCustomGalleryTagsAsyncAndRemoveCustomGalleryTagsAsync_True()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
             var added =
                 await endpoint.AddCustomGalleryTagsAsync(new List<string> {"Cats", "Dogs"}).ConfigureAwait(false);
@@ -35,6 +35,8 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
 
             Assert.True(removed);
 
+            Thread.Sleep(2000);
+
             gallery = await endpoint.GetCustomGalleryAsync().ConfigureAwait(false);
 
             Assert.False(gallery.Tags.Contains("cats"));
@@ -45,7 +47,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task AddFilteredOutGalleryTagAsyncAndRemoveCustomGalleryTagsAsync_True()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
             var added = await endpoint.AddFilteredOutGalleryTagAsync("movies").ConfigureAwait(false);
 
@@ -74,7 +76,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task GetCustomGalleryAsync_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
             var gallery = await endpoint.GetCustomGalleryAsync().ConfigureAwait(false);
             Assert.NotNull(gallery);
@@ -84,7 +86,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task GetFilteredOutGalleryAsync_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
             var gallery =
                 await
@@ -97,7 +99,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task GetCustomGalleryItemAsync_WithImage_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
             var item = await endpoint.GetCustomGalleryItemAsync("02SW9og").ConfigureAwait(false);
             Assert.NotNull(item);
@@ -108,7 +110,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task GetCustomGalleryItemAsync_WithAlbum_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
             var item = await endpoint.GetCustomGalleryItemAsync("jzzwJ").ConfigureAwait(false);
             Assert.NotNull(item);

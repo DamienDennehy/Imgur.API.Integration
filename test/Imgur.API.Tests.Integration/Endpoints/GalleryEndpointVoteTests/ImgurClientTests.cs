@@ -13,7 +13,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointVoteTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetGalleryItemVotesAsync_Any()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
+            var client = new ImgurClient(Settings.ClientId);
             var endpoint = new GalleryEndpoint(client);
 
             var votes = await endpoint.GetGalleryItemVotesAsync("7EhqwbF").ConfigureAwait(false);

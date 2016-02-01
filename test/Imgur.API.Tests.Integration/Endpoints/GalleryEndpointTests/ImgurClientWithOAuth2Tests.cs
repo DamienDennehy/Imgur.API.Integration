@@ -8,7 +8,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
         //[Trait("Category", "GalleryEndpoint")]
         //public async Task PublishToGalleryAsync_True()
         //{
-        //    var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+        //    var client = new ImgurClient(Settings.ClientId, OAuth2Token);
         //    var endpoint = new GalleryEndpoint(client);
 
         //    var published = await endpoint.PublishToGalleryAsync("Rp47ldM", "API Publish Test", "2", true, false).ConfigureAwait(false);
@@ -24,7 +24,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointTests
         //[Trait("Category", "GalleryEndpoint")]
         //public async Task ReportGalleryItemAsync_True()
         //{
-        //    var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+        //    var client = new ImgurClient(Settings.ClientId, OAuth2Token);
         //    var endpoint = new GalleryEndpoint(client);
 
         //    var reported = await endpoint.ReportGalleryItemAsync("olQIw", ReportReason.Pornography).ConfigureAwait(false);

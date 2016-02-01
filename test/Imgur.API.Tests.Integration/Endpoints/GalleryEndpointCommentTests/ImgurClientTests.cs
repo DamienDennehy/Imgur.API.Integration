@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetGalleryItemCommentAsync_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
+            var client = new ImgurClient(Settings.ClientId);
             var endpoint = new GalleryEndpoint(client);
 
             var comment = await endpoint.GetGalleryItemCommentAsync(542787274, "9cYFV").ConfigureAwait(false);
@@ -26,7 +26,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetGalleryItemCommentCountAsync_True()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
+            var client = new ImgurClient(Settings.ClientId);
             var endpoint = new GalleryEndpoint(client);
 
             var commentCount = await endpoint.GetGalleryItemCommentCountAsync("9cYFV").ConfigureAwait(false);
@@ -38,7 +38,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetGalleryItemCommentIdsAsync_True()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
+            var client = new ImgurClient(Settings.ClientId);
             var endpoint = new GalleryEndpoint(client);
 
             var commentIds = await endpoint.GetGalleryItemCommentIdsAsync("9cYFV").ConfigureAwait(false);
@@ -50,7 +50,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetGalleryItemCommentsAsync_True()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret);
+            var client = new ImgurClient(Settings.ClientId);
             var endpoint = new GalleryEndpoint(client);
 
             var comments = await endpoint.GetGalleryItemCommentsAsync("9cYFV").ConfigureAwait(false);

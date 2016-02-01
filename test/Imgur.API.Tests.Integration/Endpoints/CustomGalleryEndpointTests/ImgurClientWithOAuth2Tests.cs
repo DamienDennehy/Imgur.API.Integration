@@ -18,7 +18,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task AddCustomGalleryTagsAsyncAndRemoveCustomGalleryTagsAsync_True()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
 
             await endpoint.RemoveCustomGalleryTagsAsync(new List<string> {"cats", "dogs"}).ConfigureAwait(false);
@@ -38,6 +38,8 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
 
             Assert.True(removed);
 
+            Thread.Sleep(2000);
+
             gallery = await endpoint.GetCustomGalleryAsync().ConfigureAwait(false);
 
             Assert.False(gallery.Tags.Contains("cats"));
@@ -48,7 +50,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task AddFilteredOutGalleryTagAsyncAndRemoveCustomGalleryTagsAsync_True()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
 
             await endpoint.RemoveFilteredOutGalleryTagAsync("movies").ConfigureAwait(false);
@@ -56,19 +58,15 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
 
             Assert.True(added);
 
-            Thread.Sleep(500);
-
             var gallery = await endpoint.GetFilteredOutGalleryAsync().ConfigureAwait(false);
 
             Assert.True(gallery.Tags.Contains("movies"));
-
-            Thread.Sleep(500);
 
             var removed = await endpoint.RemoveFilteredOutGalleryTagAsync("movies").ConfigureAwait(false);
 
             Assert.True(removed);
 
-            Thread.Sleep(500);
+            Thread.Sleep(2000);
 
             gallery = await endpoint.GetFilteredOutGalleryAsync().ConfigureAwait(false);
 
@@ -79,7 +77,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task GetCustomGalleryAsync_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
             var gallery = await endpoint.GetCustomGalleryAsync().ConfigureAwait(false);
             Assert.NotNull(gallery);
@@ -89,7 +87,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task GetFilteredOutGalleryAsync_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
             var gallery =
                 await
@@ -102,7 +100,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task GetCustomGalleryItemAsync_WithImage_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
             var item = await endpoint.GetCustomGalleryItemAsync("02SW9og").ConfigureAwait(false);
             Assert.NotNull(item);
@@ -113,7 +111,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
         [Trait("Category", "CustomGalleryEndpoint")]
         public async Task GetCustomGalleryItemAsync_WithAlbum_NotNull()
         {
-            var client = new ImgurClient(Settings.ClientId, Settings.ClientSecret, OAuth2Token);
+            var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
             var item = await endpoint.GetCustomGalleryItemAsync("jzzwJ").ConfigureAwait(false);
             Assert.NotNull(item);

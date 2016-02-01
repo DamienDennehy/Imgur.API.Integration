@@ -13,7 +13,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task CreateGalleryItemCommentAsync_NotNull()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new GalleryEndpoint(client);
 
             var comment =
@@ -28,7 +28,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointCommentTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task CreateGalleryItemCommentReplyAsync_NotNull()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new GalleryEndpoint(client);
 
             var comment =

@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
         [Trait("Category", "AccountEndpointComment")]
         public async Task DeleteCommentAsync_WithValidReponse_ThrowsImgurException()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var exception =
@@ -29,7 +29,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
         [Trait("Category", "AccountEndpointComment")]
         public async Task GetCommentCountAsync_WithValidReponse_Equal()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var commentCount = await endpoint.GetCommentCountAsync().ConfigureAwait(false);
@@ -41,7 +41,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
         [Trait("Category", "AccountEndpointComment")]
         public async Task GetCommentIdsAsync_Equal()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var comments = await endpoint.GetCommentIdsAsync().ConfigureAwait(false);
@@ -53,7 +53,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointCommentTests
         [Trait("Category", "AccountEndpointComment")]
         public async Task GetCommentsAsync_Equal()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey, OAuth2Token);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey, OAuth2Token);
             var endpoint = new AccountEndpoint(client);
 
             var comments = await endpoint.GetCommentsAsync().ConfigureAwait(false);

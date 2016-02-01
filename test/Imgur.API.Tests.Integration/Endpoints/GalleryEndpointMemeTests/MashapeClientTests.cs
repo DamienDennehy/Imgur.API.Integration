@@ -14,7 +14,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointMemeTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetMemesSubGalleryAsync_Any()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
             var memes = await endpoint.GetMemesSubGalleryAsync().ConfigureAwait(false);
@@ -26,7 +26,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.GalleryEndpointMemeTests
         [Trait("Category", "GalleryEndpoint")]
         public async Task GetMemesSubGalleryImageAsync_NotNull()
         {
-            var client = new MashapeClient(Settings.ClientId, Settings.ClientSecret, Settings.MashapeKey);
+            var client = new MashapeClient(Settings.ClientId, Settings.MashapeKey);
             var endpoint = new GalleryEndpoint(client);
 
             var meme = await endpoint.GetMemesSubGalleryImageAsync("qjHJPWZ").ConfigureAwait(false);
