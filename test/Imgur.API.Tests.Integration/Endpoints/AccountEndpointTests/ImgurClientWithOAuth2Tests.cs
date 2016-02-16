@@ -45,6 +45,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AccountEndpointTests
             var settings = await endpoint.GetAccountSettingsAsync().ConfigureAwait(false);
 
             Assert.False(settings.PublicImages);
+            Assert.False(string.IsNullOrWhiteSpace(settings.AccountUrl));
         }
 
         [Fact]
