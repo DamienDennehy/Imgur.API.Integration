@@ -21,7 +21,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.CustomGalleryEndpointTests
             var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new CustomGalleryEndpoint(client);
 
-            await endpoint.RemoveCustomGalleryTagsAsync(new List<string> {"cats", "dogs"}).ConfigureAwait(false);
+            Task.WaitAll(endpoint.RemoveCustomGalleryTagsAsync(new List<string> {"cats", "dogs"}));
 
             var added =
                 await endpoint.AddCustomGalleryTagsAsync(new List<string> {"Cats", "Dogs"}).ConfigureAwait(false);

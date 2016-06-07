@@ -21,7 +21,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
             var updated =
                 await
                     endpoint.AddAlbumImagesAsync(actualAlbum.Id,
-                        new List<string> {"uH3kfZP", "VzbrLbO", "OkFyVOe", "Y8BbQuU"}).ConfigureAwait(false);
+                        new List<string> {"KM5gQeJ", "VzbrLbO", "OkFyVOe", "Y8BbQuU"}).ConfigureAwait(false);
 
             Assert.True(updated);
         }
@@ -36,7 +36,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
             var album = await endpoint.CreateAlbumAsync(
                 "TheTitle", "TheDescription",
                 AlbumPrivacy.Hidden, AlbumLayout.Grid,
-                "uH3kfZP", new List<string> {"uH3kfZP", "VzbrLbO"}).ConfigureAwait(false);
+                "KM5gQeJ", new List<string> {"KM5gQeJ", "VzbrLbO"}).ConfigureAwait(false);
 
             Assert.NotNull(album);
             Assert.NotNull(album.Id);
@@ -99,10 +99,10 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
             var client = new ImgurClient(Settings.ClientId, OAuth2Token);
             var endpoint = new AlbumEndpoint(client);
 
-            var image = await endpoint.GetAlbumImageAsync("uH3kfZP", actualAlbum.Id).ConfigureAwait(false);
+            var image = await endpoint.GetAlbumImageAsync("KM5gQeJ", actualAlbum.Id).ConfigureAwait(false);
 
             Assert.NotNull(image);
-            Assert.Equal("uH3kfZP", image.Id);
+            Assert.Equal("KM5gQeJ", image.Id);
         }
 
         public async Task GetAlbumImagesAsync_WithAlbum_Equal(IAlbum actualAlbum)
@@ -122,7 +122,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
             var updated =
                 await
-                    endpoint.RemoveAlbumImagesAsync(actualAlbum.Id, new List<string> {"uH3kfZP", "VzbrLbO"})
+                    endpoint.RemoveAlbumImagesAsync(actualAlbum.Id, new List<string> {"KM5gQeJ", "VzbrLbO"})
                         .ConfigureAwait(false);
 
             Assert.True(updated);
@@ -135,7 +135,7 @@ namespace Imgur.API.Tests.Integration.Endpoints.AlbumEndpointTests
 
             var updated =
                 await
-                    endpoint.SetAlbumImagesAsync(actualAlbum.Id, new List<string> {"uH3kfZP", "OkFyVOe", "Y8BbQuU"})
+                    endpoint.SetAlbumImagesAsync(actualAlbum.Id, new List<string> {"KM5gQeJ", "OkFyVOe", "Y8BbQuU"})
                         .ConfigureAwait(false);
 
             Assert.True(updated);
