@@ -6,6 +6,7 @@ install:
 
     core.exe /install /quiet /norestart
 
+    nuget sources add -Name MyGet-CI -Source http://myget.org/f/damiendennehy/
 
     dotnet restore
 cache: C:\Program Files (x86)\Microsoft SDKs\NuGetPackages
