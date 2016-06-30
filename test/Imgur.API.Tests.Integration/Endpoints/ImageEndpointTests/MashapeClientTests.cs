@@ -40,7 +40,6 @@ namespace Imgur.API.Tests.Integration.Endpoints.ImageEndpointTests
             Assert.Equal(actualImage.Link, expectedImage.Link);
             Assert.Equal(actualImage.Gifv, expectedImage.Gifv);
             Assert.Equal(actualImage.Mp4, expectedImage.Mp4);
-            Assert.Equal(actualImage.Webm, expectedImage.Webm);
             Assert.Equal(actualImage.Looping, expectedImage.Looping);
             Assert.Equal(actualImage.Favorite, expectedImage.Favorite);
             Assert.Equal(actualImage.Nsfw, expectedImage.Nsfw);
