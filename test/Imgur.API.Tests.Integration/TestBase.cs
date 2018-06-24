@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using Imgur.API.Models;
-using Imgur.API.Models.Impl;
 using Newtonsoft.Json;
 
 namespace Imgur.API.Tests.Integration

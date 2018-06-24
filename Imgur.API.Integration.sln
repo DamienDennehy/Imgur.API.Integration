@@ -1,16 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Imgur.API.Tests.Integration", "test\Imgur.API.Tests.Integration\Imgur.API.Tests.Integration.xproj", "{F63F60F0-2779-499F-B622-82F436EB2855}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FC9D3497-BB4D-4F9D-B8B7-F644FF647188}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D7BF7DC7-E3AD-4581-A452-E59E672C3270}"
-	ProjectSection(SolutionItems) = preProject
-		test\Imgur.API.Tests.Integration\global.json = test\Imgur.API.Tests.Integration\global.json
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imgur.API.Tests.Integration", "test\Imgur.API.Tests.Integration\Imgur.API.Tests.Integration.csproj", "{F63F60F0-2779-499F-B622-82F436EB2855}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F63F60F0-2779-499F-B622-82F436EB2855} = {FC9D3497-BB4D-4F9D-B8B7-F644FF647188}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6CF0EC01-CDAE-41C7-B78D-550C466EB2F4}
 	EndGlobalSection
 EndGlobal
